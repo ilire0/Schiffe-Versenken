@@ -16,10 +16,15 @@ int main(int argc, char **argv)
 		SpielfeldGegner[i][y] = 0 ;
 		}
 	}
+	SpielfeldSpieler[0][0] = 1 ;
+	SpielfeldSpieler[0][1] = 1 ;
+	SpielfeldSpieler[0][2] = 1 ;
 	createGrid();
-	
+	printf("\n");
+	printf("\n");
 	return 0;
 }
+
 
 void createGrid(){
 //ABC Koordinaten
@@ -30,26 +35,38 @@ void createGrid(){
 			printf("| %c ",wert);
 		}
 	printf("|\n");
-	printf("           -----------------------------------------\n");
+	printf("           ");
+	for(unsigned char a = 0 ; a < SIZE; a++){
+			printf("----");
+		}
+	printf("-\n");
 	printf("\n");
 		
-//123 Koordinaten & Feldanzeige
+//123 Koordinaten
 	int x = 0  ;
 	for(int i = 0 ; i < SIZE;i++){
-		printf("           -----------------------------------------\n");
+		printf("           ");
+		for(unsigned char a = 0 ; a < SIZE; a++){
+			printf("----");
+		}
+		printf("-\n");
 		printf("| %d |      ",x);
 		x++;
 			for(int y = 0 ;	y < SIZE;y++){
 				switch(SpielfeldSpieler[i][y]) {
-					case 0: 	printf("|   "); break;
-					case 1:		printf("| O "); break;
-					case 2:		printf("| X "); break;
-					case 3:		printf("| ~ "); break;
+					case 0: 	printf("|   "); break; //LEER
+					case 1:		printf("| O "); break; //BOOT
+					case 2:		printf("| X "); break; //HIT
+					case 3:		printf("| ~ "); break; //MISS
 					default: 	printf("|   "); break;
 				}
 			}
 		printf("|\n");
 	}
-	printf("           -----------------------------------------\n");
+	printf("           ");
+	for(unsigned char a = 0 ; a < SIZE; a++){
+		printf("----");
+	}
+	printf("-\n");
 	printf("\n");
 	}
