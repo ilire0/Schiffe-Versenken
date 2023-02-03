@@ -1,0 +1,8 @@
+while(der anfang == true){
+1.Idee
+2.Einteilung von kleineren Funktionen
+3.Testversion
+4.funktionsfähige Version erstellt
+5.Veröffentlichen in Github
+6.Implementieren in größeren Testcode
+}
