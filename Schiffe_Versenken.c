@@ -54,29 +54,42 @@ void createGrid(){
 			printf("| %c ",wert);
 		}
 	printf("|\n");
-	printf("           -----------------------------------------\n");
+	printf("           ");
+	for(unsigned char a = 0 ; a < SIZE; a++){
+			printf("----");
+		}
+	printf("-\n");
 	printf("\n");
 		
 //123 Koordinaten
 	int x = 0  ;
 	for(int i = 0 ; i < SIZE;i++){
-		printf("           -----------------------------------------\n");
+		printf("           ");
+		for(unsigned char a = 0 ; a < SIZE; a++){
+			printf("----");
+		}
+		printf("-\n");
 		printf("| %d |      ",x);
 		x++;
 			for(int y = 0 ;	y < SIZE;y++){
 				switch(SpielfeldSpieler[i][y]) {
-					case 0: 	printf("|   "); break;
-					case 1:		printf("| O "); break;
-					case 2:		printf("| X "); break;
-					case 3:		printf("| ~ "); break;
+					case 0: 	printf("|   "); break; //LEER
+					case 1:		printf("| O "); break; //BOOT
+					case 2:		printf("| X "); break; //HIT
+					case 3:		printf("| ~ "); break; //MISS
 					default: 	printf("|   "); break;
 				}
 			}
 		printf("|\n");
 	}
-	printf("           -----------------------------------------\n");
+	printf("           ");
+	for(unsigned char a = 0 ; a < SIZE; a++){
+		printf("----");
+	}
+	printf("-\n");
 	printf("\n");
 	}
+
 
 
 void Schuss()
