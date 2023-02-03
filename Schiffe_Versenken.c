@@ -7,7 +7,8 @@ void feldkoordinate();
 
 int main(int argc, char **argv)
 {
-	
+ Beginning();
+ feldkoordinate();
 	return 0;
 }
 
