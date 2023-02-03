@@ -1,4 +1,4 @@
-Ilir: ?
+Ilir: GameLogic_2Player.
 David: Hit_Check
 Tristan: Place_Ships
 
