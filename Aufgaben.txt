@@ -1,0 +1,8 @@
+Ilir: SV_Grid 
+David: Hit_Check
+Tristan: Place_Ships
+
+
+Complete:
+-Player_Name
+-Temp_Coordinate
