@@ -1,1 +1,3 @@
 Spieler1[] & Spieler2[] --> Spielernamen
+int SpielfeldSpieler[SIZE][SIZE]; -> Spieler Spielfeld
+int SpielfeldGegner[SIZE][SIZE]; -> Gegner Spielfeld
