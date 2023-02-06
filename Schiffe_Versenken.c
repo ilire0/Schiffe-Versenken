@@ -13,8 +13,7 @@ void feldkoordinate();
 void treffer();
 void Schuss();
 
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv){
    system("@ECHO off");
     for(int i = 0 ; i < SIZE;i++){
         for(int y = 0 ;	y < SIZE;y++){
@@ -29,15 +28,15 @@ int main(int argc, char **argv)
     Schuss();
 
     return 0;
-
 }
 
 void Beginning()
 {
     printf("Willkommen zu Schiffe versenken\nBitte Spielername eingeben:\nSpieler 1:");
-    scanf("%s", &Spieler1);
+    scanf("%s", Spieler1);
+    system("cls");
     printf("Spieler2:");
-    scanf("%s", &Spieler2);
+    scanf("%s", Spieler2);
     return;
 }
 
@@ -52,6 +51,12 @@ void feldkoordinate()
 
 void createGrid(int player){
 //ABC Koordinaten
+	if(player == 1){
+	printf("Spieler 1: %s\n",Spieler1);
+	printf("\n");}
+	if(player == 2){
+	printf("Spieler 1: %s\n",Spieler1);
+	printf("\n");}
 	printf("           ");
 	for(unsigned char a = 0 ; a < SIZE; a++){
 			unsigned char wert = 65;
