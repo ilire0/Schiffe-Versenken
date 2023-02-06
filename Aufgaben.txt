@@ -1,5 +1,5 @@
 Ilir: GameLogic_2Player.
-David: Hit_Check
+David: Schuss 2 Spieler kompatible
 Tristan: Place_Ships
 
 
