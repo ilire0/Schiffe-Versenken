@@ -54,7 +54,7 @@ void createGrid(int player){
 	printf("Spieler 1: %s\n",Spieler1);
 	printf("\n");}
 	if(player == 2){
-	printf("Spieler 1: %s\n",Spieler1);
+	printf("Spieler 2: %s\n",Spieler2);
 	printf("\n");}
 	printf("           ");
 	for(unsigned char a = 0 ; a < SIZE; a++){
