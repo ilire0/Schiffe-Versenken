@@ -44,10 +44,10 @@ void Beginning()
 
 void feldkoordinate()
 {
-    printf("Spalte angeben dann Zeile angeben: \n");
+    printf("Zeile angeben dann Spalte angeben: \n");
     scanf("%s", &koordinaten);
-    koordinaten[0] = koordinaten[0] - 65;
-    koordinaten[1] = koordinaten[1] - 48;
+    koordinaten[0] = koordinaten[0] - 48;
+    koordinaten[1] = koordinaten[1] - 65;
 }
 
 void createGrid(int player){
