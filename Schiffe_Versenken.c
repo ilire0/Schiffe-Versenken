@@ -23,8 +23,10 @@ int main(int argc, char **argv){
     }
     Beginning();
     createGrid(1);
+    feldkoordinate();
     system("cls");
     createGrid(2);
+    feldkoordinate();
     Schuss();
 
     return 0;
