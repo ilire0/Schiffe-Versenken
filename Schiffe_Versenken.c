@@ -121,9 +121,9 @@ void Schuss()
 
 void treffer()
 {
-    switch(SpielfeldSpieler[koordinaten[0]][koordinaten[1]]){
-        case 0: SpielfeldSpieler[koordinaten[0]][koordinaten[1]] = 3; printf("Du hast nichts getroffen"); break;
-        case 1: SpielfeldSpieler[koordinaten[0]][koordinaten[1]] = 2; printf("Du hast getroffen!"); break;
+    switch(SpielfeldSpieler1[koordinaten[0]][koordinaten[1]]){
+        case 0: SpielfeldSpieler1[koordinaten[0]][koordinaten[1]] = 3; printf("Du hast nichts getroffen"); break;
+        case 1: SpielfeldSpieler1[koordinaten[0]][koordinaten[1]] = 2; printf("Du hast getroffen!"); break;
         case 2: printf("Das Boot ist bereits getroffen"); Schuss(); break;
         case 3: printf("Hier hast du schonmal hingeschossen, hier ist nichts"); Schuss(); break;
     }
