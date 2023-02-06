@@ -42,7 +42,6 @@ void Beginning()
 
 void feldkoordinate()
 {
-    char koordinaten[2];
     printf("Spalte angeben dann Zeile angeben: \n");
     scanf("%s", &koordinaten);
     koordinaten[0] = koordinaten[0] - 65;
