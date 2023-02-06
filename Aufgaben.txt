@@ -1,9 +1,14 @@
-Ilir: GameLogic_2Player.
-David: Schuss 2 Spieler kompatible
+Ilir: Game_Logic_2Player
+David: ?
 Tristan: Place_Ships
 
 
 Complete:
+-Game_Logic_Mockup
+-Shooting
+-Hitting
 -Player_Name
 -Temp_Coordinate
--SV_Grid
+-SV_Grid (+Updates)
+-Easteregg
+
