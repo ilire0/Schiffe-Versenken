@@ -23,12 +23,21 @@ int main(int argc, char **argv){
     }
     Beginning();
     createGrid(1);
+    //Für die einzelnen Boote (irgendwie) -> Loop ?
     feldkoordinate();
+    //Boote plazieren
     system("cls");
     createGrid(2);
+    //Für die einzelnen Boote-Gegner (irgendwie)-> Loop ?
     feldkoordinate();
+    //Spielphase beginnt hier (while loop)
     Schuss();
-
+    /*
+    * Gewinner wird ausgewählt .
+    * Gewinner wird ausgegeben.
+    * Verlierer wird gerickrolled.
+    * Außer bei Einzelspieler
+    */
     return 0;
 }
 
