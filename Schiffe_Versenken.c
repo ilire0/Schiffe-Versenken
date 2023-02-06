@@ -2,7 +2,7 @@
 #include <stdio.h>
 #define SIZE 10
 char Spieler1[50], Spieler2[50];
-
+int Fokus = 1;
 int SpielfeldSpieler1[SIZE][SIZE];
 int SpielfeldSpieler2[SIZE][SIZE];
 char koordinaten[2];
@@ -116,17 +116,33 @@ void createGrid(int player){
 
 void Schuss()
 {
-    printf("\n %s schiesst \n", &Spieler1);
-    feldkoordinate();
-    treffer();
+    if (Fokus == 1){
+        printf("\n %s schiesst \n", &Spieler1);
+        feldkoordinate();
+        treffer1();
+    } if (Fokus == 2){
+        printf("\n %s schiesst \n", &Spieler2);
+        feldkoordinate();
+        treffer2();
+    }
 }
 
-void treffer()
+void treffer1()
+{
+    switch(SpielfeldSpieler2[koordinaten[0]][koordinaten[1]]){
+        case 0: SpielfeldSpieler2[koordinaten[0]][koordinaten[1]] = 3; printf("Du hast nichts getroffen\n"); break;
+        case 1: SpielfeldSpieler2[koordinaten[0]][koordinaten[1]] = 2; printf("Du hast getroffen!\n"); break;
+        case 2: printf("Das Boot ist bereits getroffen\n"); Schuss(); break;
+        case 3: printf("Hier hast du schonmal hingeschossen, hier ist nichts\n"); Schuss(); break;
+    }
+}
+
+void treffer2()
 {
     switch(SpielfeldSpieler1[koordinaten[0]][koordinaten[1]]){
-        case 0: SpielfeldSpieler1[koordinaten[0]][koordinaten[1]] = 3; printf("Du hast nichts getroffen"); break;
-        case 1: SpielfeldSpieler1[koordinaten[0]][koordinaten[1]] = 2; printf("Du hast getroffen!"); break;
-        case 2: printf("Das Boot ist bereits getroffen"); Schuss(); break;
-        case 3: printf("Hier hast du schonmal hingeschossen, hier ist nichts"); Schuss(); break;
+        case 0: SpielfeldSpieler1[koordinaten[0]][koordinaten[1]] = 3; printf("Du hast nichts getroffen\n"); break;
+        case 1: SpielfeldSpieler1[koordinaten[0]][koordinaten[1]] = 2; printf("Du hast getroffen!\n"); break;
+        case 2: printf("Das Boot ist bereits getroffen\n"); Schuss(); break;
+        case 3: printf("Hier hast du schonmal hingeschossen, hier ist nichts\n"); Schuss(); break;
     }
 }
