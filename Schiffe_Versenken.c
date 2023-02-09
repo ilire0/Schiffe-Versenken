@@ -8,20 +8,30 @@
 #define AC_YELLOW "\x1b[33m"
 #define AC_NORMAL "\x1b[m"
 
+//Globale Variablen
 char Spieler1[50], Spieler2[50];
+int SpielerPunkte1 = 0 ;
+int SpielerPunkte2 = 0 ;
 int Fokus = 1;
 int SpielfeldSpieler1[SIZE][SIZE];
 int SpielfeldSpieler2[SIZE][SIZE];
 char koordinaten[2];
+char winner = 0 ;
+int Spielmodus ;
 
-void createGrid(int player);
+//Funktionen
 void Beginning();
+void createGrid(int player);
+void createHitGrid(int player);
+void twoPlayer();
 void feldkoordinate();
 void treffer();
 void Schuss();
 
 int main(int argc, char **argv){
    system("@ECHO off");
+	printf("\n");
+	printf("\n");
     for(int i = 0 ; i < SIZE;i++){
         for(int y = 0 ;	y < SIZE;y++){
             SpielfeldSpieler1[i][y] = 0 ;
@@ -29,22 +39,21 @@ int main(int argc, char **argv){
         }
     }
     Beginning();
-    createGrid(1);
-    //Für die einzelnen Boote (irgendwie) -> Loop ?
-    feldkoordinate();
-    //Boote plazieren
-    system("cls");
-    createGrid(2);
-    //Für die einzelnen Boote-Gegner (irgendwie)-> Loop ?
-    feldkoordinate();
-    //Spielphase beginnt hier (while loop)
-    Schuss();
-    /*
-    * Gewinner wird ausgewählt .
-    * Gewinner wird ausgegeben.
-    * Verlierer wird gerickrolled.
-    * Außer bei Einzelspieler
-    */
+    if(Spielmodus == 2){
+	twoPlayer();
+	printf("\n");
+	system("pause");
+	if(winner == 1){
+	printf("\n%s Bitte gehen Sie vom Bildschirm weg , da der Verlierer %s seine Strafe erhält.",Spieler1,Spieler2);
+	system("pause");
+	}
+	if(winner == 2){
+	printf("\n%s Bitte gehen Sie vom Bildschirm weg , da der Verlierer %s seine Strafe erhält.",Spieler2,Spieler1);
+	system("pause");
+	}
+	system("start https://youtu.be/dQw4w9WgXcQ");
+	printf("\n");
+    }
     return 0;
 }
 
@@ -191,6 +200,36 @@ void createHitGrid(int player){
 	printf("\n");
 }
 
+
+void twoPlayer(){
+	//-------------------------------------------
+	//PLACE_BOAT PLAYER1&2
+	//-------------------------------------------
+	while(1){
+	createGrid(1);
+	createHitGrid(2);
+	Schuss();
+	fokus = 2 ; 
+	if(SpielerPunkte1 == 3000){
+		winner = 1 ;
+		break;	
+		}
+	system("cls");
+	createGrid(2);
+	createHitGrid(1);
+	Schuss();
+	fokus = 1;
+	if(SpielerPunkte2 == 3000){
+		winner = 2 ;
+		break;	
+		}
+	}
+	switch(winner){
+		case 1: system("cls");printf("Spieler 1: %s hat gewonnen !",Spieler1);break;
+		case 2: system("cls");printf("Spieler 2: %s hat gewonnen !",Spieler2);break;
+		default:system("cls");printf("Spieler Missing_NO: %s hat gewonnen !",meme);break;
+		}
+}
 
 
 
