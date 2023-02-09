@@ -50,12 +50,17 @@ int main(int argc, char **argv){
 
 void Beginning()
 {
-    printf("Willkommen zu Schiffe versenken\nBitte Spielername eingeben:\nSpieler 1:");
+    printf("Willkommen zu Schiffe versenken\nBitte einen Spielmodus waehlen\n");
+    printf("1-Einzelspieler\n2-Mehrspieler\n>\n");
+    scanf("%d", &Spielmodus);
+    printf("Bitte Spielername eingeben:\nSpieler 1:\n");
     scanf("%s", Spieler1);
     system("cls");
-    printf("Spieler2:");
-    scanf("%s", Spieler2);
-    return;
+    if (Spielmodus ==2) {
+        printf("Bitte Spielername eingeben:\nSpieler2:\n");
+        scanf("%s", Spieler2);
+        system("cls");
+    }
 }
 
 void feldkoordinate()
