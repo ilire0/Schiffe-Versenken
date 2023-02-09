@@ -1,6 +1,13 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #define SIZE 10
+#define AC_BLUE "\x1b[34m"
+#define AC_CYAN "\x1b[36m"
+#define AC_RED "\x1b[31m"
+#define AC_YELLOW "\x1b[33m"
+#define AC_NORMAL "\x1b[m"
+
 char Spieler1[50], Spieler2[50];
 int Fokus = 1;
 int SpielfeldSpieler1[SIZE][SIZE];
@@ -62,10 +69,10 @@ void feldkoordinate()
 void createGrid(int player){
 //ABC Koordinaten
 	if(player == 1){
-	printf("Spieler 1: %s\n",Spieler1);
+	printf("           Spieler 1: %s\n",Spieler1);
 	printf("\n");}
 	if(player == 2){
-	printf("Spieler 2: %s\n",Spieler2);
+	printf("           Spieler 2: %s\n",Spieler2);
 	printf("\n");}
 	printf("           ");
 	for(unsigned char a = 0 ; a < SIZE; a++){
@@ -95,17 +102,17 @@ void createGrid(int player){
 				if(player == 1){
 					switch(SpielfeldSpieler1[i][y]) {
 						case 0: 	printf("|   "); break; //LEER
-						case 1:		printf("| O "); break; //BOOT
-						case 2:		printf("| X "); break; //HIT
-						case 3:		printf("| ~ "); break; //MISS
+						case 1:		printf("| "); printf("%sO%s ",AC_BLUE,AC_NORMAL);break; //BOOT
+						case 2:		printf("| "); printf("%sX%s ",AC_RED,AC_NORMAL);break; //HIT
+						case 3:		printf("| "); printf("%s~%s ",AC_YELLOW,AC_NORMAL);break; //MISS
 						default: 	printf("|   "); break;
 					}
 				}if(player == 2){
 					switch(SpielfeldSpieler2[i][y]) {
 						case 0: 	printf("|   "); break; //LEER
-						case 1:		printf("| O "); break; //BOOT
-						case 2:		printf("| X "); break; //HIT
-						case 3:		printf("| ~ "); break; //MISS
+						case 1:		printf("| "); printf("%sO%s ",AC_CYAN,AC_NORMAL);break; //BOOT
+						case 2:		printf("| "); printf("%sX%s ",AC_RED,AC_NORMAL);break; //HIT
+						case 3:		printf("| "); printf("%s~%s ",AC_YELLOW,AC_NORMAL);break; //MISS
 						default: 	printf("|   "); break;
 					}
 				 }	
@@ -119,6 +126,7 @@ void createGrid(int player){
 	printf("-\n");
 	printf("\n");
 }
+
 
 
 
