@@ -132,6 +132,65 @@ void createGrid(int player){
 	printf("\n");
 }
 
+void createHitGrid(int player){
+//ABC Koordinaten
+	if(player == 1){
+	printf("           Gegnerisches Feld: %s\n",Spieler1);
+	printf("\n");}
+	if(player == 2){
+	printf("           Gegnerisches Feld: %s\n",Spieler2);
+	printf("\n");}
+	printf("           ");
+	for(unsigned char a = 0 ; a < SIZE; a++){
+			unsigned char wert = 65;
+			wert = wert + a;
+			printf("| %c ",wert);
+		}
+	printf("|\n");
+	printf("           ");
+	for(unsigned char a = 0 ; a < SIZE; a++){
+			printf("----");
+		}
+	printf("-\n");
+	printf("\n");
+		
+//123 Koordinaten
+	int x = 0  ;
+	for(int i = 0 ; i < SIZE;i++){
+		printf("           ");
+		for(unsigned char a = 0 ; a < SIZE; a++){
+			printf("----");
+		}
+		printf("-\n");
+		printf("| %d |      ",x);
+		x++;
+			for(int y = 0 ;	y < SIZE;y++){
+				if(player == 1){
+					switch(SpielfeldSpieler1[i][y]) {
+						case 0: 	printf("|   "); break; //LEER
+						case 2:		printf("| "); printf("%sX%s ",AC_RED,AC_NORMAL);break; //HIT
+						case 3:		printf("| "); printf("%s~%s ",AC_YELLOW,AC_NORMAL);break; //MISS
+						default: 	printf("|   "); break;
+					}
+				}if(player == 2){
+					switch(SpielfeldSpieler2[i][y]) {
+						case 0: 	printf("|   "); break; //LEER
+						case 2:		printf("| "); printf("%sX%s ",AC_RED,AC_NORMAL);break; //HIT
+						case 3:		printf("| "); printf("%s~%s ",AC_YELLOW,AC_NORMAL);break; //MISS
+						default: 	printf("|   "); break;
+					}
+				 }	
+			}
+		printf("|\n");
+	}
+	printf("           ");
+	for(unsigned char a = 0 ; a < SIZE; a++){
+			printf("----");
+		}
+	printf("-\n");
+	printf("\n");
+}
+
 
 
 
