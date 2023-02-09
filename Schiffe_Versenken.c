@@ -59,14 +59,19 @@ int main(int argc, char **argv){
 
 void Beginning()
 {
-    printf("Willkommen zu Schiffe versenken\nBitte einen Spielmodus waehlen\n");
-    printf("1-Einzelspieler\n2-Mehrspieler\n>\n");
+    printf("Willkommen zu Schiffe versenken\n");
+    printf("\nJeder Spieler versteckt eine kleine Flotte von Schiffen vor seinem Gegner.\nDerjenige, der zuerst alle Schiffe des Gegners komplett getroffen und versenkt hat, gewinnt.\n");
+    printf("Jeder Treffer eines Schiffes wird mit 100 Punkten belohnt.\nMax. Punktzahl: 3000\n\n");
+    printf("Bitte waehlen Sie den Spielmodus aus:\n");
+    printf("1-Einzelspieler\n2-Mehrspieler\n\n>");
     scanf("%d", &Spielmodus);
-    printf("Bitte Spielername eingeben:\nSpieler 1:\n");
+    system("cls");
+    printf("Bitte Spielername eingeben:\n\nSpieler 1:\n\n");
     scanf("%s", Spieler1);
     system("cls");
     if (Spielmodus ==2) {
-        printf("Bitte Spielername eingeben:\nSpieler2:\n");
+	printf("Bitte Spielername eingeben:\n");
+        printf("\nSpieler 2:\n\n");
         scanf("%s", Spieler2);
         system("cls");
     }
