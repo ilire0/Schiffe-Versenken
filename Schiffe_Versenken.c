@@ -57,13 +57,12 @@ int main(int argc, char **argv){
     return 0;
 }
 
-void Beginning()
-{
-    printf("Willkommen zu Schiffe versenken\n");
-    printf("\nJeder Spieler versteckt eine kleine Flotte von Schiffen vor seinem Gegner.\nDerjenige, der zuerst alle Schiffe des Gegners komplett getroffen und versenkt hat, gewinnt.\n");
-    printf("Jeder Treffer eines Schiffes wird mit 100 Punkten belohnt.\nMax. Punktzahl: 3000\n\n");
-    printf("Bitte waehlen Sie den Spielmodus aus:\n");
-    printf("1-Einzelspieler\n2-Mehrspieler\n\n>");
+void Beginning(){
+    printf(" Willkommen zu Schiffe versenken\n");
+    printf("\n Jeder Spieler versteckt eine kleine Flotte von Schiffen vor seinem Gegner.\n Derjenige, der zuerst alle Schiffe des Gegners komplett getroffen und versenkt hat, gewinnt.\n");
+    printf(" Jeder Treffer eines Schiffes wird mit 100 Punkten belohnt.\n Max. Punktzahl: 3000\n\n");
+    printf(" Bitte waehlen Sie den Spielmodus aus:\n");
+    printf(" 1-Einzelspieler\n 2-Mehrspieler\n\n>");
     scanf("%d", &Spielmodus);
     system("cls");
     printf("Bitte Spielername eingeben:\n\nSpieler 1:\n\n");
@@ -77,6 +76,7 @@ void Beginning()
     }
 }
 
+
 void feldkoordinate()
 {
     printf("Zeile angeben dann Spalte angeben: \n");
@@ -89,9 +89,11 @@ void createGrid(int player){
 //ABC Koordinaten
 	if(player == 1){
 	printf("           Spieler 1: %s\n",Spieler1);
+	printf("           Punkte: %d\n",SpielerPunkte1);
 	printf("\n");}
 	if(player == 2){
 	printf("           Spieler 2: %s\n",Spieler2);
+	printf("           Punkte: %d\n",SpielerPunkte2);
 	printf("\n");}
 	printf("           ");
 	for(unsigned char a = 0 ; a < SIZE; a++){
