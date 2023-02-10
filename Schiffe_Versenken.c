@@ -27,6 +27,16 @@ void twoPlayer();
 void feldkoordinate();
 void treffer();
 void Schuss();
+void placeShip1();
+void placeShip2();
+struct Boote{
+    int Schlachtschiff;
+    int Kreuzer;
+    int Zerstoerer;
+    int UBoot;
+};
+struct Boote BooteP1 = {1, 2, 3, 4};
+struct Boote BooteP2 = {1, 2, 3, 4};
 
 int main(int argc, char **argv){
    system("@ECHO off");
@@ -297,6 +307,17 @@ void placeShip1(){
 		if((Startkoordinate[0] != Endkoordinate[0]) && (Startkoordinate[1] == Endkoordinate[1])){
 		
 			Speicher = Startkoordinate[0] - Endkoordinate[0];  //4 - 6 = -2  3-0 = 3
+			if ((Speicher*(-1)+1)>5){break;}
+            		if (BooteP1.Schlachtschiff == 0){break;}
+            		if (BooteP1.Kreuzer == 0){break;}
+            		if (BooteP1.Zerstoerer == 0){break;}
+            		if (BooteP1.UBoot == 0){break;}
+            		switch((Speicher*(-1)+1)){
+                		case 5: BooteP1.Schlachtschiff --;
+                		case 4: BooteP1.Kreuzer --;
+                		case 3: BooteP1.Zerstoerer --;
+                		case 2: BooteP1.UBoot --;
+            		}
 			if(Speicher>0){ 
 			
 			//-------------------------------------Placement------------------------------------
@@ -378,6 +399,17 @@ void placeShip2(){
 		if((Startkoordinate[0] != Endkoordinate[0]) && (Startkoordinate[1] == Endkoordinate[1])){
 		
 			Speicher = Startkoordinate[0] - Endkoordinate[0];  //4 - 6 = -2  3-0 = 3
+			if ((Speicher*(-1)+1)>5){break;}
+            		if (BooteP1.Schlachtschiff == 0){break;}
+            		if (BooteP1.Kreuzer == 0){break;}
+            		if (BooteP1.Zerstoerer == 0){break;}
+            		if (BooteP1.UBoot == 0){break;}
+            		switch((Speicher*(-1)+1)){
+                		case 5: BooteP1.Schlachtschiff --;
+                		case 4: BooteP1.Kreuzer --;
+                		case 3: BooteP1.Zerstoerer --;
+                		case 2: BooteP1.UBoot --;
+            		}
 			if(Speicher>0){ 
 			
 			//-------------------------------------Placement------------------------------------
