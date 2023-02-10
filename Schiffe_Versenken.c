@@ -273,3 +273,52 @@ void treffer2()
         case 3: printf("Hier hast du schonmal hingeschossen, hier ist nichts\n"); Schuss(); break;
     }
 }
+void placeShip(){
+	char Startkoordinate[3], Endkoordinate[2];
+	char Speicher, x=0;
+	printf("Bitte Startkoordinate angeben:");
+	scanf("%s", Startkoordinate);
+	printf("Bitte Endkoordinat angeben:");
+	scanf("%s", Endkoordinate);
+	Startkoordinate[0] =Startkoordinate[0] - 65;
+	Endkoordinate[0] =Endkoordinate[0] - 65;
+	Startkoordinate[1] = Startkoordinate[1]-48;
+	Endkoordinate[1] =Endkoordinate[1]- 48;
+	if (Startkoordinate[0]>10 || Startkoordinate[0]<0 || Startkoordinate[1]>10 || Startkoordinate[1]<0 ||Endkoordinate[0]>10 || Endkoordinate[0]<0 || Endkoordinate[1]>10 || Endkoordinate[1]<0 )
+	{
+		printf("Bitte gültige Werte eingeben");
+	}
+	else x = 1;
+	
+	
+	if(Startkoordinate[0] != Endkoordinate[0]){
+		Speicher = Startkoordinate[0] - Endkoordinate[0];
+		if(Speicher>0){
+			for(int i=0; i<=Speicher; i++ ){
+				SpielfeldSpieler1[Startkoordinate[0+i]][Startkoordinate[0]] = 1;
+			}
+		}
+		else{
+			Speicher = Speicher * (-1);
+			for(int i=0; i<=Speicher; i++ ){
+				SpielfeldSpieler1[Endkoordinate[0+i]][Startkoordinate[0]] = 1;
+			}
+		}
+	}
+	else 
+	{
+		Speicher = Startkoordinate[1] - Endkoordinate[1];
+				if(Speicher>0){
+			for(int i=0; i<=Speicher; i++ ){
+				SpielfeldSpieler1[Startkoordinate[0]][Startkoordinate[0+i]] = 1;
+			}
+		}
+		else{
+			Speicher = Speicher * (-1);
+			for(int i=0; i<=Speicher; i++ ){
+				SpielfeldSpieler1[Startkoordinate[0]][Endkoordinate[0+i]] = 1;
+			}
+		}
+	}
+	
+}
