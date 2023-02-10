@@ -338,8 +338,8 @@ void placeShip1(){
 					if(SpielfeldSpieler1[Startkoordinate[0]][Endkoordinate[1]-i] == 1){
 						SpielfeldSpieler1[Startkoordinate[0]][Endkoordinate[1]-i] = 2; // 3-i
 				}else{SpielfeldSpieler1[Startkoordinate[0]][Endkoordinate[1]-i] = 1;}					
-				break;
-			}
+				
+			}break;
 		}
 	}
 		}else{system("cls");
@@ -419,8 +419,8 @@ void placeShip2(){
 					if(SpielfeldSpieler2[Startkoordinate[0]][Endkoordinate[1]-i] == 1){
 						SpielfeldSpieler2[Startkoordinate[0]][Endkoordinate[1]-i] = 2; // 3-i
 				}else{SpielfeldSpieler2[Startkoordinate[0]][Endkoordinate[1]-i] = 1;}					
-				break;
-			}
+				
+			}break;
 		}
 	}
 		}else{system("cls");
