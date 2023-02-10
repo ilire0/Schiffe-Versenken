@@ -298,31 +298,22 @@ void placeShip1(){
 		
 			Speicher = Startkoordinate[0] - Endkoordinate[0];  //4 - 6 = -2  3-0 = 3
 			if(Speicher>0){ 
-			//-------------------------------------Rule Checking------------------------------------
 			
-				for(int i=0; i<=Speicher; i++ ){
-					if(SpielfeldSpieler1[Startkoordinate[0]-i][Endkoordinate[1]] == 4){x = 1 ;break;}
-				}
-				if(x == 1){printf("\nDie Schiffe duerfen sich nicht berueheren! ");break;}
-				
 			//-------------------------------------Placement------------------------------------
 					for(int i=0; i<=Speicher; i++ ){
-						SpielfeldSpieler1[Startkoordinate[0]-i][Endkoordinate[1]] = 1; // 3-i
+						if(SpielfeldSpieler1[Startkoordinate[0]-i][Endkoordinate[1]] == 1){
+						SpielfeldSpieler1[Startkoordinate[0]-i][Endkoordinate[1]] = 2;
+						}else{ SpielfeldSpieler1[Startkoordinate[0]-i][Endkoordinate[1]] = 1;} // 3-i
 					}
 					break;
 			}
 			else{ 
 				Speicher = Speicher * (-1); //3	
-			//-------------------------------------Rule Checking------------------------------------
-			
+		//-------------------------------------Placement------------------------------------
 				for(int i=0; i<=Speicher; i++ ){
-					if(SpielfeldSpieler1[Startkoordinate[0]-i][Startkoordinate[1]] == 4){x = 1 ;break;}
-				}
-				if(x == 1){printf("\nDie Schiffe duerfen sich nicht berueheren! ");break;}
-				
-			//-------------------------------------Placement------------------------------------
-				for(int i=0; i<=Speicher; i++ ){
-					SpielfeldSpieler1[Endkoordinate[0]-i][Startkoordinate[1]] = 1; //[3 - i] ; [0]  = 1
+					if(SpielfeldSpieler1[Endkoordinate[0]-i][Startkoordinate[1]] == 1){
+						SpielfeldSpieler1[Endkoordinate[0]-i][Startkoordinate[1]] = 2; // 3-i
+					}else{SpielfeldSpieler1[Endkoordinate[0]-i][Startkoordinate[1]] = 1;}
 				}
 				break;
 				}
@@ -331,36 +322,30 @@ void placeShip1(){
 		if((Startkoordinate[1] != Endkoordinate[1]) && (Startkoordinate[0] == Endkoordinate[0])) {
 			Speicher = Startkoordinate[1] - Endkoordinate[1];  // 1A-1C -> 0 - 2 = -2  | 1C - 1A = 2 - 0 = 2
 			if(Speicher>0){
-		//-------------------------------------Rule Checking------------------------------------
-				for(int i=0; i<=Speicher; i++ ){
-					if(SpielfeldSpieler1[Startkoordinate[0]][Startkoordinate[1]-i] == 4){x = 1 ;}
-					}
-				if(x == 1){printf("\nDie Schiffe duerfen sich nicht berueheren! ");break;}
 		//-------------------------------------Placement------------------------------------
 				for(int i=0; i<=Speicher; i++ ){
-					SpielfeldSpieler1[Startkoordinate[0]][Startkoordinate[1]-i] = 1; // [1] [2 -i]
+					if(SpielfeldSpieler1[Startkoordinate[0]][Startkoordinate[1]-i] == 1){
+						SpielfeldSpieler1[Startkoordinate[0]][Startkoordinate[1]-i] = 2; // 3-i
+					}else{SpielfeldSpieler1[Startkoordinate[0]][Startkoordinate[1]-i] = 1;} // [1] [2 -i]
 				}
 				break;
 				}
 		else{
 			Speicher = Speicher * (-1); //2 
 			if(Speicher>0){
-		//-------------------------------------Rule Checking------------------------------------
-				for(int i=0; i<=Speicher; i++ ){
-					if(SpielfeldSpieler1[Startkoordinate[0]][Endkoordinate[1]-i] == 4){x = 1 ;}
-				}
-				if(x == 1){printf("\nDie Schiffe duerfen sich nicht berueheren! ");break;}
 		//-------------------------------------Placement------------------------------------
 				for(int i=0; i<=Speicher; i++ ){
-					SpielfeldSpieler1[Startkoordinate[0]][Endkoordinate[1]-i] = 1; // [1] ; [2-i]
-				}
+					if(SpielfeldSpieler1[Startkoordinate[0]][Endkoordinate[1]-i] == 1){
+						SpielfeldSpieler1[Startkoordinate[0]][Endkoordinate[1]-i] = 2; // 3-i
+				}else{SpielfeldSpieler1[Startkoordinate[0]][Endkoordinate[1]-i] = 1;}					
 				break;
 			}
 		}
-		else{system("cls");
+	}
+		}else{system("cls");
 			printf("Diagonalen sind nicht erlaubt!\n\n");
 		}
-		}
+		
 	}
 	if(x == 1){
 		x = 0 ;
@@ -394,31 +379,22 @@ void placeShip2(){
 		
 			Speicher = Startkoordinate[0] - Endkoordinate[0];  //4 - 6 = -2  3-0 = 3
 			if(Speicher>0){ 
-			//-------------------------------------Rule Checking------------------------------------
 			
-				for(int i=0; i<=Speicher; i++ ){
-					if(SpielfeldSpieler2[Startkoordinate[0]-i][Endkoordinate[1]] == 4){x = 1 ;break;}
-				}
-				if(x == 1){printf("\nDie Schiffe duerfen sich nicht berueheren! ");break;}
-				
 			//-------------------------------------Placement------------------------------------
 					for(int i=0; i<=Speicher; i++ ){
-						SpielfeldSpieler2[Startkoordinate[0]-i][Endkoordinate[1]] = 1; // 3-i
+						if(SpielfeldSpieler2[Startkoordinate[0]-i][Endkoordinate[1]] == 1){
+						SpielfeldSpieler2[Startkoordinate[0]-i][Endkoordinate[1]] = 2;
+						}else{ SpielfeldSpieler2[Startkoordinate[0]-i][Endkoordinate[1]] = 1;} // 3-i
 					}
 					break;
 			}
 			else{ 
 				Speicher = Speicher * (-1); //3	
-			//-------------------------------------Rule Checking------------------------------------
-			
+		//-------------------------------------Placement------------------------------------
 				for(int i=0; i<=Speicher; i++ ){
-					if(SpielfeldSpieler2[Startkoordinate[0]-i][Startkoordinate[1]] == 4){x = 1 ;break;}
-				}
-				if(x == 1){printf("\nDie Schiffe duerfen sich nicht berueheren! ");break;}
-				
-			//-------------------------------------Placement------------------------------------
-				for(int i=0; i<=Speicher; i++ ){
-					SpielfeldSpieler2[Endkoordinate[0]-i][Startkoordinate[1]] = 1; //[3 - i] ; [0]  = 1
+					if(SpielfeldSpieler2[Endkoordinate[0]-i][Startkoordinate[1]] == 1){
+						SpielfeldSpieler2[Endkoordinate[0]-i][Startkoordinate[1]] = 2; // 3-i
+					}else{SpielfeldSpieler2[Endkoordinate[0]-i][Startkoordinate[1]] = 1;}
 				}
 				break;
 				}
@@ -427,41 +403,36 @@ void placeShip2(){
 		if((Startkoordinate[1] != Endkoordinate[1]) && (Startkoordinate[0] == Endkoordinate[0])) {
 			Speicher = Startkoordinate[1] - Endkoordinate[1];  // 1A-1C -> 0 - 2 = -2  | 1C - 1A = 2 - 0 = 2
 			if(Speicher>0){
-		//-------------------------------------Rule Checking------------------------------------
-				for(int i=0; i<=Speicher; i++ ){
-					if(SpielfeldSpieler2[Startkoordinate[0]][Startkoordinate[1]-i] == 4){x = 1 ;}
-					}
-				if(x == 1){printf("\nDie Schiffe duerfen sich nicht berueheren! ");break;}
 		//-------------------------------------Placement------------------------------------
 				for(int i=0; i<=Speicher; i++ ){
-					SpielfeldSpieler2[Startkoordinate[0]][Startkoordinate[1]-i] = 1; // [1] [2 -i]
+					if(SpielfeldSpieler2[Startkoordinate[0]][Startkoordinate[1]-i] == 1){
+						SpielfeldSpieler2[Startkoordinate[0]][Startkoordinate[1]-i] = 2; // 3-i
+					}else{SpielfeldSpieler2[Startkoordinate[0]][Startkoordinate[1]-i] = 1;} // [1] [2 -i]
 				}
 				break;
 				}
 		else{
 			Speicher = Speicher * (-1); //2 
 			if(Speicher>0){
-		//-------------------------------------Rule Checking------------------------------------
-				for(int i=0; i<=Speicher; i++ ){
-					if(SpielfeldSpieler2[Startkoordinate[0]][Endkoordinate[1]-i] == 4){x = 1 ;}
-				}
-				if(x == 1){printf("\nDie Schiffe duerfen sich nicht berueheren! ");break;}
 		//-------------------------------------Placement------------------------------------
 				for(int i=0; i<=Speicher; i++ ){
-					SpielfeldSpieler2[Startkoordinate[0]][Endkoordinate[1]-i] = 1; // [1] ; [2-i]
-				}
+					if(SpielfeldSpieler2[Startkoordinate[0]][Endkoordinate[1]-i] == 1){
+						SpielfeldSpieler2[Startkoordinate[0]][Endkoordinate[1]-i] = 2; // 3-i
+				}else{SpielfeldSpieler2[Startkoordinate[0]][Endkoordinate[1]-i] = 1;}					
 				break;
 			}
 		}
-		else{system("cls");
+	}
+		}else{system("cls");
 			printf("Diagonalen sind nicht erlaubt!\n\n");
 		}
-		}
-	}
+		
+	
 	if(x == 1){
 		x = 0 ;
 		system("cls");
-		placeShip2();
+		placeShip1();
 	}
+}
 }
 	
