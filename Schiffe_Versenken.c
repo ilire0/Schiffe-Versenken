@@ -236,7 +236,7 @@ void twoPlayer(){
 	createGrid(1);
 	createHitGrid(2);
 	system("pause");
-	//Schuss();
+	Schuss();
 	Fokus = 2 ; 
 	if(SpielerPunkte1 == 3000){
 		winner = 1 ;
@@ -246,7 +246,7 @@ void twoPlayer(){
 	createGrid(2);
 	createHitGrid(1);
 	system("pause");
-	//Schuss();
+	Schuss();
 	Fokus = 1;
 	if(SpielerPunkte2 == 3000){
 		winner = 2 ;
