@@ -416,6 +416,8 @@ void placeShip1(){
 		system("cls");
 		createGrid(1);
 		placeShip1();
+		system("cls");
+		createGrid(1);
 	}
 }
 }
@@ -536,6 +538,8 @@ void placeShip2(){
 		system("cls");
 		createGrid(2);
 		placeShip2();
+		system("cls");
+		createGrid(2);
 	}
 }
 }
