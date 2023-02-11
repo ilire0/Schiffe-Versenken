@@ -18,6 +18,8 @@ int SpielfeldSpieler2[SIZE][SIZE];
 char koordinaten[2];
 char winner = 0 ;
 int Spielmodus ;
+char meme[] = "RickAstley";
+int x = 0 ;
 
 //Funktionen
 void Beginning();
@@ -30,7 +32,7 @@ void Schuss();
 void placeShip1();
 void placeShip2();
 struct Boote{
-    int Schlachtschiff;
+    int Schlachtschiff ;
     int Kreuzer;
     int Zerstoerer;
     int UBoot;
@@ -40,6 +42,7 @@ struct Boote BooteP2 = {1, 2, 3, 4};
 
 int main(int argc, char **argv){
    system("@ECHO off");
+   system("cls");
 	printf("\n");
 	printf("\n");
     for(int i = 0 ; i < SIZE;i++){
@@ -54,11 +57,11 @@ int main(int argc, char **argv){
 	printf("\n");
 	system("pause");
 	if(winner == 1){
-	printf("\n%s Bitte gehen Sie vom Bildschirm weg , da der Verlierer %s seine Strafe erhält.",Spieler1,Spieler2);
+	printf("\n\n%s Bitte gehen Sie vom Bildschirm weg , da der Verlierer %s seine Strafe erhaelt.",Spieler1,Spieler2);
 	system("pause");
 	}
 	if(winner == 2){
-	printf("\n%s Bitte gehen Sie vom Bildschirm weg , da der Verlierer %s seine Strafe erhält.",Spieler2,Spieler1);
+	printf("\n\n%s Bitte gehen Sie vom Bildschirm weg , da der Verlierer %s seine Strafe erhaelt.",Spieler2,Spieler1);
 	system("pause");
 	}
 	system("start https://youtu.be/dQw4w9WgXcQ");
@@ -233,20 +236,22 @@ void twoPlayer(){
 	//-------------------------------------------
 	while(1){
 	system("cls");
+	system("pause");
 	createGrid(1);
 	createHitGrid(2);
-	system("pause");
 	Schuss();
+	system("pause");
 	Fokus = 2 ; 
 	if(SpielerPunkte1 == 3000){
 		winner = 1 ;
 		break;	
 		}
 	system("cls");
+	system("pause");
 	createGrid(2);
 	createHitGrid(1);
-	system("pause");
 	Schuss();
+	system("pause");
 	Fokus = 1;
 	if(SpielerPunkte2 == 3000){
 		winner = 2 ;
@@ -279,20 +284,20 @@ void Schuss()
 void treffer1()
 {
     switch(SpielfeldSpieler2[koordinaten[0]][koordinaten[1]]){
-        case 0: SpielfeldSpieler2[koordinaten[0]][koordinaten[1]] = 3; printf("Du hast nichts getroffen\n"); break;
-        case 1: SpielfeldSpieler2[koordinaten[0]][koordinaten[1]] = 2; printf("Du hast getroffen!\n");SpielerPunkte1 += 100; break;
-        case 2: printf("Das Boot ist bereits getroffen\n"); Schuss(); break;
-        case 3: printf("Hier hast du schonmal hingeschossen, hier ist nichts\n"); Schuss(); break;
+        case 0: SpielfeldSpieler2[koordinaten[0]][koordinaten[1]] = 3; printf("\nDu hast nichts getroffen\n"); break;
+        case 1: SpielfeldSpieler2[koordinaten[0]][koordinaten[1]] = 2; printf("\nDu hast getroffen!\n");SpielerPunkte1 += 100; break;
+        case 2: printf("\nDas Boot ist bereits getroffen\n"); Schuss(); break;
+        case 3: printf("\nHier hast du schonmal hingeschossen, hier ist nichts\n"); Schuss(); break;
     }
 }
 
 void treffer2()
 {
     switch(SpielfeldSpieler1[koordinaten[0]][koordinaten[1]]){
-        case 0: SpielfeldSpieler1[koordinaten[0]][koordinaten[1]] = 3; printf("Du hast nichts getroffen\n"); break;
-        case 1: SpielfeldSpieler1[koordinaten[0]][koordinaten[1]] = 2; printf("Du hast getroffen!\n");SpielerPunkte2 += 100; break;
-        case 2: printf("Das Boot ist bereits getroffen\n"); Schuss(); break;
-        case 3: printf("Hier hast du schonmal hingeschossen, hier ist nichts\n"); Schuss(); break;
+        case 0: SpielfeldSpieler1[koordinaten[0]][koordinaten[1]] = 3; printf("\nDu hast nichts getroffen\n"); break;
+        case 1: SpielfeldSpieler1[koordinaten[0]][koordinaten[1]] = 2; printf("\nDu hast getroffen!\n");SpielerPunkte2 += 100 ; break;
+        case 2: printf("\nDas Boot ist bereits getroffen\n"); Schuss(); break;
+        case 3: printf("\nHier hast du schonmal hingeschossen, hier ist nichts\n"); Schuss(); break;
     }
 }
 void placeShip1(){
@@ -301,6 +306,7 @@ void placeShip1(){
 		char Startkoordinate[3];
 		char Endkoordinate[3];
 		int Speicher = 0;
+		int y = 0;
 		printf("Bitte Startkoordinate angeben:");
 		scanf(" %s", Startkoordinate);
 		printf("Bitte Endkoordinat angeben:");
@@ -309,7 +315,6 @@ void placeShip1(){
 		Endkoordinate[0] =Endkoordinate[0] - 48;
 		Startkoordinate[1] = Startkoordinate[1]-65;
 		Endkoordinate[1] =Endkoordinate[1]- 65;
-		x = x ;
 
 		if (Startkoordinate[0]>SIZE || Startkoordinate[0]<0 || Startkoordinate[1]>SIZE || Startkoordinate[1]<0 ||Endkoordinate[0]>SIZE || Endkoordinate[0]<0 || Endkoordinate[1]>SIZE || Endkoordinate[1]<0 )
 		{
@@ -319,18 +324,24 @@ void placeShip1(){
 		if((Startkoordinate[0] != Endkoordinate[0]) && (Startkoordinate[1] == Endkoordinate[1])){
 		
 			Speicher = Startkoordinate[0] - Endkoordinate[0];  //4 - 6 = -2  3-0 = 3
-			if ((Speicher*(-1)+1)<2){printf("Boote kleiner als 2 Felder gibt es nicht!");break;}
-            		if ((Speicher*(-1)+1)>5){printf("Boote mit mehr als 5 Felder gibt es nicht!");break;}
-            		if (BooteP1.Schlachtschiff == 0){printf("Du hast kein Schlachtschiff mehr frei!");break;}
-            		if (BooteP1.Kreuzer == 0){printf("Du hast keine Kreuzer mehr frei!");break;}
-            		if (BooteP1.Zerstoerer == 0){printf("Du hast keine Zerstoerer mehr frei!");break;}
-            		if (BooteP1.UBoot == 0){printf("Du hast keine U-Boote mehr frei!");break;}
+			if (Speicher>0){Speicher=Speicher*(-1); y=1;}
+			if ((Speicher*(-1)+1)<2){printf("\nBoote kleiner als 2 Felder gibt es nicht!\n");break;}
+            		if ((Speicher*(-1)+1)>5){printf("\nBoote mit mehr als 5 Felder gibt es nicht!\n");break;}
             		switch((Speicher*(-1)+1)){
-                		case 5: BooteP1.Schlachtschiff --;
-                		case 4: BooteP1.Kreuzer --;
-                		case 3: BooteP1.Zerstoerer --;
-                		case 2: BooteP1.UBoot --;
+                case 5: if (BooteP1.Schlachtschiff == 0){printf("\nDu hast kein Schlachtschiff mehr frei!\n");x=1;break;}
+                case 4: if (BooteP1.Kreuzer == 0){printf("\nDu hast keine Kreuzer mehr frei\n!");x=1;break;}
+                case 3: if (BooteP1.Zerstoerer == 0){printf("\nDu hast keine Zerstoerer mehr frei!\n");x=1;break;}
+                case 2: if (BooteP1.UBoot == 0){printf("\nDu hast keine U-Boote mehr frei!\n");x=1;break;}
+			}
+			if(x == 1){x = 0 ;placeShip1();break ;}
+            		switch((Speicher*(-1)+1)){
+                		case 5: BooteP1.Schlachtschiff --;break;
+                		case 4: BooteP1.Kreuzer --;break;
+                		case 3: BooteP1.Zerstoerer --;break;
+                		case 2: BooteP1.UBoot --;break;
+                		default: break;
             		}
+            if(Speicher<0 && y==1){Speicher=Speicher*(-1);y=0;}
 			if(Speicher>0){ 
 			
 			//-------------------------------------Placement------------------------------------
@@ -354,19 +365,24 @@ void placeShip1(){
 		}
 //-------------------------------------QUER----------------------------------------------------------------------------
 		if((Startkoordinate[1] != Endkoordinate[1]) && (Startkoordinate[0] == Endkoordinate[0])) {
-			Speicher = Startkoordinate[1] - Endkoordinate[1];  // 1A-1C -> 0 - 2 = -2  | 1C - 1A = 2 - 0 = 2
-			if ((Speicher*(-1)+1)<2){printf("Boote kleiner als 2 Felder gibt es nicht!");break;}
-            		if ((Speicher*(-1)+1)>5){printf("Boote mit mehr als 5 Felder gibt es nicht!");break;}
-            		if (BooteP1.Schlachtschiff == 0){printf("Du hast kein Schlachtschiff mehr frei!");break;}
-            		if (BooteP1.Kreuzer == 0){printf("Du hast keine Kreuzer mehr frei!");break;}
-            		if (BooteP1.Zerstoerer == 0){printf("Du hast keine Zerstoerer mehr frei!");break;}
-            		if (BooteP1.UBoot == 0){printf("Du hast keine U-Boote mehr frei!");break;}
+			Speicher = Startkoordinate[1] - Endkoordinate[1]; 
+			if (Speicher>0){Speicher=Speicher*(-1); y=1;} // 1A-1C -> 0 - 2 = -2  | 1C - 1A = 2 - 0 = 2
+			if ((Speicher*(-1)+1)<2){printf("\nBoote kleiner als 2 Felder gibt es nicht!\n");break;}
+            		if ((Speicher*(-1)+1)>5){printf("\nBoote mit mehr als 5 Felder gibt es nicht!\n");break;}
             		switch((Speicher*(-1)+1)){
-                		case 5: BooteP1.Schlachtschiff --;
-                		case 4: BooteP1.Kreuzer --;
-                		case 3: BooteP1.Zerstoerer --;
-                		case 2: BooteP1.UBoot --;
+                case 5: if (BooteP1.Schlachtschiff == 0){printf("\nDu hast kein Schlachtschiff mehr frei!\n");x=1;break;}
+                case 4: if (BooteP1.Kreuzer == 0){printf("\nDu hast keine Kreuzer mehr frei!\n");x=1;break;}
+                case 3: if (BooteP1.Zerstoerer == 0){printf("\nDu hast keine Zerstoerer mehr frei!\n");x=1;break;}
+                case 2: if (BooteP1.UBoot == 0){printf("\nDu hast keine U-Boote mehr frei!\n");x=1;break;}
+			}if(x == 1){x = 0 ;placeShip1();break ;}
+            		switch((Speicher*(-1)+1)){
+                		case 5: BooteP1.Schlachtschiff --;break;
+                		case 4: BooteP1.Kreuzer --;break;
+                		case 3: BooteP1.Zerstoerer --;break;
+                		case 2: BooteP1.UBoot --;break;
+                		default: break;
             		}
+            		if(Speicher<0 && y==1){Speicher=Speicher*(-1);y=0;}
 			if(Speicher>0){
 		//-------------------------------------Placement------------------------------------
 				for(int i=0; i<=Speicher; i++ ){
@@ -391,15 +407,17 @@ void placeShip1(){
 	}
 		}else{system("cls");
 			printf("Diagonalen sind nicht erlaubt!\n\n");
+			x = 1;
 		}
 		
-	}
+	
 	if(x == 1){
 		x = 0 ;
 		system("cls");
 		createGrid(1);
 		placeShip1();
 	}
+}
 }
 
 void placeShip2(){
@@ -408,6 +426,7 @@ void placeShip2(){
 		char Startkoordinate[3];
 		char Endkoordinate[3];
 		int Speicher = 0;
+		int y = 0;
 		printf("Bitte Startkoordinate angeben:");
 		scanf(" %s", Startkoordinate);
 		printf("Bitte Endkoordinat angeben:");
@@ -416,7 +435,6 @@ void placeShip2(){
 		Endkoordinate[0] =Endkoordinate[0] - 48;
 		Startkoordinate[1] = Startkoordinate[1]-65;
 		Endkoordinate[1] =Endkoordinate[1]- 65;
-		x = x ;
 
 		if (Startkoordinate[0]>SIZE || Startkoordinate[0]<0 || Startkoordinate[1]>SIZE || Startkoordinate[1]<0 ||Endkoordinate[0]>SIZE || Endkoordinate[0]<0 || Endkoordinate[1]>SIZE || Endkoordinate[1]<0 )
 		{
@@ -426,18 +444,24 @@ void placeShip2(){
 		if((Startkoordinate[0] != Endkoordinate[0]) && (Startkoordinate[1] == Endkoordinate[1])){
 		
 			Speicher = Startkoordinate[0] - Endkoordinate[0];  //4 - 6 = -2  3-0 = 3
-			if ((Speicher*(-1)+1)<2){printf("Boote kleiner als 2 Felder gibt es nicht!");break;}
-            		if ((Speicher*(-1)+1)>5){printf("Boote mit mehr als 5 Felder gibt es nicht!");break;}
-            		if (BooteP2.Schlachtschiff == 0){printf("Du hast kein Schlachtschiff mehr frei!");break;}
-            		if (BooteP2.Kreuzer == 0){printf("Du hast keine Kreuzer mehr frei!");break;}
-            		if (BooteP2.Zerstoerer == 0){printf("Du hast keine Zerstoerer mehr frei!");break;}
-            		if (BooteP2.UBoot == 0){printf("Du hast keine U-Boote mehr frei!");break;}
+			if (Speicher>0){Speicher=Speicher*(-1); y=1;}
+			if ((Speicher*(-1)+1)<2){printf("\nBoote kleiner als 2 Felder gibt es nicht!\n");break;}
+            		if ((Speicher*(-1)+1)>5){printf("\nBoote mit mehr als 5 Felder gibt es nicht!\n");break;}
             		switch((Speicher*(-1)+1)){
-                		case 5: BooteP2.Schlachtschiff --;
-                		case 4: BooteP2.Kreuzer --;
-                		case 3: BooteP2.Zerstoerer --;
-                		case 2: BooteP2.UBoot --;
+                case 5: if (BooteP2.Schlachtschiff == 0){printf("\nDu hast kein Schlachtschiff mehr frei!\n");x=1;break;}
+                case 4: if (BooteP2.Kreuzer == 0){printf("\nDu hast keine Kreuzer mehr frei!\n");x=1;break;}
+                case 3: if (BooteP2.Zerstoerer == 0){printf("\nDu hast keine Zerstoerer mehr frei!\n");x=1;break;}
+                case 2: if (BooteP2.UBoot == 0){printf("\nDu hast keine U-Boote mehr frei!\n");x=1;break;}
+			}
+			if(x == 1){x = 0 ;placeShip2();break ;}
+            		switch((Speicher*(-1)+1)){
+                		case 5: BooteP2.Schlachtschiff --;break;
+                		case 4: BooteP2.Kreuzer --;break;
+                		case 3: BooteP2.Zerstoerer --;break;
+                		case 2: BooteP2.UBoot --;break;
+                		default: break;
             		}
+            if(Speicher<0 && y==1){Speicher=Speicher*(-1);y=0;}
 			if(Speicher>0){ 
 			
 			//-------------------------------------Placement------------------------------------
@@ -453,32 +477,37 @@ void placeShip2(){
 		//-------------------------------------Placement------------------------------------
 				for(int i=0; i<=Speicher; i++ ){
 					if(SpielfeldSpieler2[Endkoordinate[0]-i][Startkoordinate[1]] == 1){
-						SpielfeldSpieler2[Endkoordinate[0]-i][Startkoordinate[1]] = 2;SpielerPunkte1+= 200; // 3-i
+						SpielfeldSpieler2[Endkoordinate[0]-i][Startkoordinate[1]] = 2;  SpielerPunkte1+= 200;// 3-i
 					}else{SpielfeldSpieler2[Endkoordinate[0]-i][Startkoordinate[1]] = 1;}
 				}
 				break;
 				}
 		}
-
+//-------------------------------------QUER----------------------------------------------------------------------------
 		if((Startkoordinate[1] != Endkoordinate[1]) && (Startkoordinate[0] == Endkoordinate[0])) {
-			Speicher = Startkoordinate[1] - Endkoordinate[1];  // 1A-1C -> 0 - 2 = -2  | 1C - 1A = 2 - 0 = 2
-			if ((Speicher*(-1)+1)<2){printf("Boote kleiner als 2 Felder gibt es nicht!");break;}
-            		if ((Speicher*(-1)+1)>5){printf("Boote mit mehr als 5 Felder gibt es nicht!");break;}
-            		if (BooteP2.Schlachtschiff == 0){printf("Du hast kein Schlachtschiff mehr frei!");break;}
-            		if (BooteP2.Kreuzer == 0){printf("Du hast keine Kreuzer mehr frei!");break;}
-            		if (BooteP2.Zerstoerer == 0){printf("Du hast keine Zerstoerer mehr frei!");break;}
-            		if (BooteP2.UBoot == 0){printf("Du hast keine U-Boote mehr frei!");break;}
+			Speicher = Startkoordinate[1] - Endkoordinate[1]; 
+			if (Speicher>0){Speicher=Speicher*(-1); y=1;} // 1A-1C -> 0 - 2 = -2  | 1C - 1A = 2 - 0 = 2
+			if ((Speicher*(-1)+1)<2){printf("\nBoote kleiner als 2 Felder gibt es nicht!\n");break;}
+            		if ((Speicher*(-1)+1)>5){printf("\nBoote mit mehr als 5 Felder gibt es nicht!\n");break;}
             		switch((Speicher*(-1)+1)){
-                		case 5: BooteP2.Schlachtschiff --;
-                		case 4: BooteP2.Kreuzer --;
-                		case 3: BooteP2.Zerstoerer --;
-                		case 2: BooteP2.UBoot --;
+                case 5: if (BooteP2.Schlachtschiff == 0){printf("\nDu hast kein Schlachtschiff mehr frei!\n");x=1;break;}
+                case 4: if (BooteP2.Kreuzer == 0){printf("\nDu hast keine Kreuzer mehr frei!\n");x=1;break;}
+                case 3: if (BooteP2.Zerstoerer == 0){printf("\nDu hast keine Zerstoerer mehr frei!\n");x=1;break;}
+                case 2: if (BooteP2.UBoot == 0){printf("\nDu hast keine U-Boote mehr frei!\n");x=1;break;}
+			}if(x == 1){x = 0 ;placeShip1();break ;}
+            		switch((Speicher*(-1)+1)){
+                		case 5: BooteP2.Schlachtschiff --;break;
+                		case 4: BooteP2.Kreuzer --;break;
+                		case 3: BooteP2.Zerstoerer --;break;
+                		case 2: BooteP2.UBoot --;break;
+                		default: break;
             		}
+            		if(Speicher<0 && y==1){Speicher=Speicher*(-1);y=0;}
 			if(Speicher>0){
 		//-------------------------------------Placement------------------------------------
 				for(int i=0; i<=Speicher; i++ ){
 					if(SpielfeldSpieler2[Startkoordinate[0]][Startkoordinate[1]-i] == 1){
-						SpielfeldSpieler2[Startkoordinate[0]][Startkoordinate[1]-i] = 2;SpielerPunkte1+= 200; // 3-i
+						SpielfeldSpieler2[Startkoordinate[0]][Startkoordinate[1]-i] = 2; SpielerPunkte1+= 200;// 3-i
 					}else{SpielfeldSpieler2[Startkoordinate[0]][Startkoordinate[1]-i] = 1;} // [1] [2 -i]
 				}
 				break;
@@ -489,14 +518,16 @@ void placeShip2(){
 		//-------------------------------------Placement------------------------------------
 				for(int i=0; i<=Speicher; i++ ){
 					if(SpielfeldSpieler2[Startkoordinate[0]][Endkoordinate[1]-i] == 1){
-						SpielfeldSpieler2[Startkoordinate[0]][Endkoordinate[1]-i] = 2;SpielerPunkte1+= 200; // 3-i
+						SpielfeldSpieler2[Startkoordinate[0]][Endkoordinate[1]-i] = 2; SpielerPunkte1+= 200; // 3-i
 				}else{SpielfeldSpieler2[Startkoordinate[0]][Endkoordinate[1]-i] = 1;}					
-				break;
+				
 			}
+			break;
 		}
 	}
 		}else{system("cls");
 			printf("Diagonalen sind nicht erlaubt!\n\n");
+			x = 1;
 		}
 		
 	
@@ -508,5 +539,4 @@ void placeShip2(){
 	}
 }
 }
-	
-	
+
