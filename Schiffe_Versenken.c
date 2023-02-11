@@ -220,13 +220,24 @@ void createHitGrid(int player){
 
 void twoPlayer(){
 	//-------------------------------------------
-	//PLACE_BOAT PLAYER1&2
+	for(int i = 0 ; i <= 9 ; i++){
+	createGrid(1);
+	placeShip1();
+	system("cls");
+}
+	for(int i = 0 ; i <= 9 ; i++){
+	createGrid(2);
+	placeShip2();
+	system("cls");
+}
 	//-------------------------------------------
 	while(1){
+	system("cls");
 	createGrid(1);
 	createHitGrid(2);
-	Schuss();
-	fokus = 2 ; 
+	system("pause");
+	//Schuss();
+	Fokus = 2 ; 
 	if(SpielerPunkte1 == 3000){
 		winner = 1 ;
 		break;	
@@ -234,8 +245,9 @@ void twoPlayer(){
 	system("cls");
 	createGrid(2);
 	createHitGrid(1);
-	Schuss();
-	fokus = 1;
+	system("pause");
+	//Schuss();
+	Fokus = 1;
 	if(SpielerPunkte2 == 3000){
 		winner = 2 ;
 		break;	
@@ -385,6 +397,7 @@ void placeShip1(){
 	if(x == 1){
 		x = 0 ;
 		system("cls");
+		createGrid(1);
 		placeShip1();
 	}
 }
@@ -490,6 +503,7 @@ void placeShip2(){
 	if(x == 1){
 		x = 0 ;
 		system("cls");
+		createGrid(2);
 		placeShip2();
 	}
 }
