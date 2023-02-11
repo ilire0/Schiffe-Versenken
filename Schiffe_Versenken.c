@@ -307,6 +307,18 @@ void placeShip1(){
 		if((Startkoordinate[0] != Endkoordinate[0]) && (Startkoordinate[1] == Endkoordinate[1])){
 		
 			Speicher = Startkoordinate[0] - Endkoordinate[0];  //4 - 6 = -2  3-0 = 3
+			if ((Speicher*(-1)+1)<2){printf("Boote kleiner als 2 Felder gibt es nicht!");break;}
+            		if ((Speicher*(-1)+1)>5){printf("Boote mit mehr als 5 Felder gibt es nicht!");break;}
+            		if (BooteP1.Schlachtschiff == 0){printf("Du hast kein Schlachtschiff mehr frei!");break;}
+            		if (BooteP1.Kreuzer == 0){printf("Du hast keine Kreuzer mehr frei!");break;}
+            		if (BooteP1.Zerstoerer == 0){printf("Du hast keine Zerstoerer mehr frei!");break;}
+            		if (BooteP1.UBoot == 0){printf("Du hast keine U-Boote mehr frei!");break;}
+            		switch((Speicher*(-1)+1)){
+                		case 5: BooteP1.Schlachtschiff --;
+                		case 4: BooteP1.Kreuzer --;
+                		case 3: BooteP1.Zerstoerer --;
+                		case 2: BooteP1.UBoot --;
+            		}
 			if(Speicher>0){ 
 			
 			//-------------------------------------Placement------------------------------------
@@ -331,6 +343,18 @@ void placeShip1(){
 //-------------------------------------QUER----------------------------------------------------------------------------
 		if((Startkoordinate[1] != Endkoordinate[1]) && (Startkoordinate[0] == Endkoordinate[0])) {
 			Speicher = Startkoordinate[1] - Endkoordinate[1];  // 1A-1C -> 0 - 2 = -2  | 1C - 1A = 2 - 0 = 2
+			if ((Speicher*(-1)+1)<2){printf("Boote kleiner als 2 Felder gibt es nicht!");break;}
+            		if ((Speicher*(-1)+1)>5){printf("Boote mit mehr als 5 Felder gibt es nicht!");break;}
+            		if (BooteP1.Schlachtschiff == 0){printf("Du hast kein Schlachtschiff mehr frei!");break;}
+            		if (BooteP1.Kreuzer == 0){printf("Du hast keine Kreuzer mehr frei!");break;}
+            		if (BooteP1.Zerstoerer == 0){printf("Du hast keine Zerstoerer mehr frei!");break;}
+            		if (BooteP1.UBoot == 0){printf("Du hast keine U-Boote mehr frei!");break;}
+            		switch((Speicher*(-1)+1)){
+                		case 5: BooteP1.Schlachtschiff --;
+                		case 4: BooteP1.Kreuzer --;
+                		case 3: BooteP1.Zerstoerer --;
+                		case 2: BooteP1.UBoot --;
+            		}
 			if(Speicher>0){
 		//-------------------------------------Placement------------------------------------
 				for(int i=0; i<=Speicher; i++ ){
@@ -389,6 +413,18 @@ void placeShip2(){
 		if((Startkoordinate[0] != Endkoordinate[0]) && (Startkoordinate[1] == Endkoordinate[1])){
 		
 			Speicher = Startkoordinate[0] - Endkoordinate[0];  //4 - 6 = -2  3-0 = 3
+			if ((Speicher*(-1)+1)<2){printf("Boote kleiner als 2 Felder gibt es nicht!");break;}
+            		if ((Speicher*(-1)+1)>5){printf("Boote mit mehr als 5 Felder gibt es nicht!");break;}
+            		if (BooteP2.Schlachtschiff == 0){printf("Du hast kein Schlachtschiff mehr frei!");break;}
+            		if (BooteP2.Kreuzer == 0){printf("Du hast keine Kreuzer mehr frei!");break;}
+            		if (BooteP2.Zerstoerer == 0){printf("Du hast keine Zerstoerer mehr frei!");break;}
+            		if (BooteP2.UBoot == 0){printf("Du hast keine U-Boote mehr frei!");break;}
+            		switch((Speicher*(-1)+1)){
+                		case 5: BooteP2.Schlachtschiff --;
+                		case 4: BooteP2.Kreuzer --;
+                		case 3: BooteP2.Zerstoerer --;
+                		case 2: BooteP2.UBoot --;
+            		}
 			if(Speicher>0){ 
 			
 			//-------------------------------------Placement------------------------------------
@@ -413,6 +449,18 @@ void placeShip2(){
 
 		if((Startkoordinate[1] != Endkoordinate[1]) && (Startkoordinate[0] == Endkoordinate[0])) {
 			Speicher = Startkoordinate[1] - Endkoordinate[1];  // 1A-1C -> 0 - 2 = -2  | 1C - 1A = 2 - 0 = 2
+			if ((Speicher*(-1)+1)<2){printf("Boote kleiner als 2 Felder gibt es nicht!");break;}
+            		if ((Speicher*(-1)+1)>5){printf("Boote mit mehr als 5 Felder gibt es nicht!");break;}
+            		if (BooteP2.Schlachtschiff == 0){printf("Du hast kein Schlachtschiff mehr frei!");break;}
+            		if (BooteP2.Kreuzer == 0){printf("Du hast keine Kreuzer mehr frei!");break;}
+            		if (BooteP2.Zerstoerer == 0){printf("Du hast keine Zerstoerer mehr frei!");break;}
+            		if (BooteP2.UBoot == 0){printf("Du hast keine U-Boote mehr frei!");break;}
+            		switch((Speicher*(-1)+1)){
+                		case 5: BooteP2.Schlachtschiff --;
+                		case 4: BooteP2.Kreuzer --;
+                		case 3: BooteP2.Zerstoerer --;
+                		case 2: BooteP2.UBoot --;
+            		}
 			if(Speicher>0){
 		//-------------------------------------Placement------------------------------------
 				for(int i=0; i<=Speicher; i++ ){
