@@ -307,6 +307,7 @@ void placeShip1(){
 		if((Startkoordinate[0] != Endkoordinate[0]) && (Startkoordinate[1] == Endkoordinate[1])){
 		
 			Speicher = Startkoordinate[0] - Endkoordinate[0];  //4 - 6 = -2  3-0 = 3
+			if ((Speicher*(-1)+1)<2){break;}
 			if ((Speicher*(-1)+1)>5){break;}
             		if (BooteP1.Schlachtschiff == 0){break;}
             		if (BooteP1.Kreuzer == 0){break;}
@@ -342,6 +343,7 @@ void placeShip1(){
 
 		if((Startkoordinate[1] != Endkoordinate[1]) && (Startkoordinate[0] == Endkoordinate[0])) {
 			Speicher = Startkoordinate[1] - Endkoordinate[1];  // 1A-1C -> 0 - 2 = -2  | 1C - 1A = 2 - 0 = 2
+			if ((Speicher*(-1)+1)<2){break;}
 			if ((Speicher*(-1)+1)>5){break;}
             		if (BooteP1.Schlachtschiff == 0){break;}
             		if (BooteP1.Kreuzer == 0){break;}
@@ -410,6 +412,7 @@ void placeShip2(){
 		if((Startkoordinate[0] != Endkoordinate[0]) && (Startkoordinate[1] == Endkoordinate[1])){
 		
 			Speicher = Startkoordinate[0] - Endkoordinate[0];  //4 - 6 = -2  3-0 = 3
+			if ((Speicher*(-1)+1)<2){break;}
 			if ((Speicher*(-1)+1)>5){break;}
             		if (BooteP2.Schlachtschiff == 0){break;}
             		if (BooteP2.Kreuzer == 0){break;}
@@ -445,6 +448,7 @@ void placeShip2(){
 
 		if((Startkoordinate[1] != Endkoordinate[1]) && (Startkoordinate[0] == Endkoordinate[0])) {
 			Speicher = Startkoordinate[1] - Endkoordinate[1];  // 1A-1C -> 0 - 2 = -2  | 1C - 1A = 2 - 0 = 2
+			if ((Speicher*(-1)+1)<2){break;}
 			if ((Speicher*(-1)+1)>5){break;}
             		if (BooteP2.Schlachtschiff == 0){break;}
             		if (BooteP2.Kreuzer == 0){break;}
