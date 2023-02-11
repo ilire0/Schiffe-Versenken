@@ -307,24 +307,12 @@ void placeShip1(){
 		if((Startkoordinate[0] != Endkoordinate[0]) && (Startkoordinate[1] == Endkoordinate[1])){
 		
 			Speicher = Startkoordinate[0] - Endkoordinate[0];  //4 - 6 = -2  3-0 = 3
-			if ((Speicher*(-1)+1)<2){break;}
-			if ((Speicher*(-1)+1)>5){break;}
-            		if (BooteP1.Schlachtschiff == 0){break;}
-            		if (BooteP1.Kreuzer == 0){break;}
-            		if (BooteP1.Zerstoerer == 0){break;}
-            		if (BooteP1.UBoot == 0){break;}
-            		switch((Speicher*(-1)+1)){
-                		case 5: BooteP1.Schlachtschiff --;
-                		case 4: BooteP1.Kreuzer --;
-                		case 3: BooteP1.Zerstoerer --;
-                		case 2: BooteP1.UBoot --;
-            		}
 			if(Speicher>0){ 
 			
 			//-------------------------------------Placement------------------------------------
 					for(int i=0; i<=Speicher; i++ ){
 						if(SpielfeldSpieler1[Startkoordinate[0]-i][Endkoordinate[1]] == 1){
-						SpielfeldSpieler1[Startkoordinate[0]-i][Endkoordinate[1]] = 2;
+						SpielfeldSpieler1[Startkoordinate[0]-i][Endkoordinate[1]] = 2; SpielerPunkte2+= 200;
 						}else{ SpielfeldSpieler1[Startkoordinate[0]-i][Endkoordinate[1]] = 1;} // 3-i
 					}
 					break;
@@ -334,32 +322,20 @@ void placeShip1(){
 		//-------------------------------------Placement------------------------------------
 				for(int i=0; i<=Speicher; i++ ){
 					if(SpielfeldSpieler1[Endkoordinate[0]-i][Startkoordinate[1]] == 1){
-						SpielfeldSpieler1[Endkoordinate[0]-i][Startkoordinate[1]] = 2; // 3-i
+						SpielfeldSpieler1[Endkoordinate[0]-i][Startkoordinate[1]] = 2;  SpielerPunkte2+= 200;// 3-i
 					}else{SpielfeldSpieler1[Endkoordinate[0]-i][Startkoordinate[1]] = 1;}
 				}
 				break;
 				}
 		}
-
+//-------------------------------------QUER----------------------------------------------------------------------------
 		if((Startkoordinate[1] != Endkoordinate[1]) && (Startkoordinate[0] == Endkoordinate[0])) {
 			Speicher = Startkoordinate[1] - Endkoordinate[1];  // 1A-1C -> 0 - 2 = -2  | 1C - 1A = 2 - 0 = 2
-			if ((Speicher*(-1)+1)<2){break;}
-			if ((Speicher*(-1)+1)>5){break;}
-            		if (BooteP1.Schlachtschiff == 0){break;}
-            		if (BooteP1.Kreuzer == 0){break;}
-            		if (BooteP1.Zerstoerer == 0){break;}
-            		if (BooteP1.UBoot == 0){break;}
-            		switch((Speicher*(-1)+1)){
-                		case 5: BooteP1.Schlachtschiff --;
-                		case 4: BooteP1.Kreuzer --;
-                		case 3: BooteP1.Zerstoerer --;
-                		case 2: BooteP1.UBoot --;
-            		}
 			if(Speicher>0){
 		//-------------------------------------Placement------------------------------------
 				for(int i=0; i<=Speicher; i++ ){
 					if(SpielfeldSpieler1[Startkoordinate[0]][Startkoordinate[1]-i] == 1){
-						SpielfeldSpieler1[Startkoordinate[0]][Startkoordinate[1]-i] = 2; // 3-i
+						SpielfeldSpieler1[Startkoordinate[0]][Startkoordinate[1]-i] = 2; SpielerPunkte2+= 200;// 3-i
 					}else{SpielfeldSpieler1[Startkoordinate[0]][Startkoordinate[1]-i] = 1;} // [1] [2 -i]
 				}
 				break;
@@ -370,10 +346,11 @@ void placeShip1(){
 		//-------------------------------------Placement------------------------------------
 				for(int i=0; i<=Speicher; i++ ){
 					if(SpielfeldSpieler1[Startkoordinate[0]][Endkoordinate[1]-i] == 1){
-						SpielfeldSpieler1[Startkoordinate[0]][Endkoordinate[1]-i] = 2; // 3-i
+						SpielfeldSpieler1[Startkoordinate[0]][Endkoordinate[1]-i] = 2; SpielerPunkte2+= 200; // 3-i
 				}else{SpielfeldSpieler1[Startkoordinate[0]][Endkoordinate[1]-i] = 1;}					
 				
-			}break;
+			}
+			break;
 		}
 	}
 		}else{system("cls");
@@ -412,24 +389,12 @@ void placeShip2(){
 		if((Startkoordinate[0] != Endkoordinate[0]) && (Startkoordinate[1] == Endkoordinate[1])){
 		
 			Speicher = Startkoordinate[0] - Endkoordinate[0];  //4 - 6 = -2  3-0 = 3
-			if ((Speicher*(-1)+1)<2){break;}
-			if ((Speicher*(-1)+1)>5){break;}
-            		if (BooteP2.Schlachtschiff == 0){break;}
-            		if (BooteP2.Kreuzer == 0){break;}
-            		if (BooteP2.Zerstoerer == 0){break;}
-            		if (BooteP2.UBoot == 0){break;}
-            		switch((Speicher*(-1)+1)){
-                		case 5: BooteP2.Schlachtschiff --;
-                		case 4: BooteP2.Kreuzer --;
-                		case 3: BooteP2.Zerstoerer --;
-                		case 2: BooteP2.UBoot --;
-            		}
 			if(Speicher>0){ 
 			
 			//-------------------------------------Placement------------------------------------
 					for(int i=0; i<=Speicher; i++ ){
 						if(SpielfeldSpieler2[Startkoordinate[0]-i][Endkoordinate[1]] == 1){
-						SpielfeldSpieler2[Startkoordinate[0]-i][Endkoordinate[1]] = 2;
+						SpielfeldSpieler2[Startkoordinate[0]-i][Endkoordinate[1]] = 2; SpielerPunkte1+= 200;
 						}else{ SpielfeldSpieler2[Startkoordinate[0]-i][Endkoordinate[1]] = 1;} // 3-i
 					}
 					break;
@@ -439,7 +404,7 @@ void placeShip2(){
 		//-------------------------------------Placement------------------------------------
 				for(int i=0; i<=Speicher; i++ ){
 					if(SpielfeldSpieler2[Endkoordinate[0]-i][Startkoordinate[1]] == 1){
-						SpielfeldSpieler2[Endkoordinate[0]-i][Startkoordinate[1]] = 2; // 3-i
+						SpielfeldSpieler2[Endkoordinate[0]-i][Startkoordinate[1]] = 2;SpielerPunkte1+= 200; // 3-i
 					}else{SpielfeldSpieler2[Endkoordinate[0]-i][Startkoordinate[1]] = 1;}
 				}
 				break;
@@ -448,23 +413,11 @@ void placeShip2(){
 
 		if((Startkoordinate[1] != Endkoordinate[1]) && (Startkoordinate[0] == Endkoordinate[0])) {
 			Speicher = Startkoordinate[1] - Endkoordinate[1];  // 1A-1C -> 0 - 2 = -2  | 1C - 1A = 2 - 0 = 2
-			if ((Speicher*(-1)+1)<2){break;}
-			if ((Speicher*(-1)+1)>5){break;}
-            		if (BooteP2.Schlachtschiff == 0){break;}
-            		if (BooteP2.Kreuzer == 0){break;}
-            		if (BooteP2.Zerstoerer == 0){break;}
-            		if (BooteP2.UBoot == 0){break;}
-            		switch((Speicher*(-1)+1)){
-                		case 5: BooteP2.Schlachtschiff --;
-                		case 4: BooteP2.Kreuzer --;
-                		case 3: BooteP2.Zerstoerer --;
-                		case 2: BooteP2.UBoot --;
-            		}
 			if(Speicher>0){
 		//-------------------------------------Placement------------------------------------
 				for(int i=0; i<=Speicher; i++ ){
 					if(SpielfeldSpieler2[Startkoordinate[0]][Startkoordinate[1]-i] == 1){
-						SpielfeldSpieler2[Startkoordinate[0]][Startkoordinate[1]-i] = 2; // 3-i
+						SpielfeldSpieler2[Startkoordinate[0]][Startkoordinate[1]-i] = 2;SpielerPunkte1+= 200; // 3-i
 					}else{SpielfeldSpieler2[Startkoordinate[0]][Startkoordinate[1]-i] = 1;} // [1] [2 -i]
 				}
 				break;
@@ -475,10 +428,10 @@ void placeShip2(){
 		//-------------------------------------Placement------------------------------------
 				for(int i=0; i<=Speicher; i++ ){
 					if(SpielfeldSpieler2[Startkoordinate[0]][Endkoordinate[1]-i] == 1){
-						SpielfeldSpieler2[Startkoordinate[0]][Endkoordinate[1]-i] = 2; // 3-i
+						SpielfeldSpieler2[Startkoordinate[0]][Endkoordinate[1]-i] = 2;SpielerPunkte1+= 200; // 3-i
 				}else{SpielfeldSpieler2[Startkoordinate[0]][Endkoordinate[1]-i] = 1;}					
-				
-			}break;
+				break;
+			}
 		}
 	}
 		}else{system("cls");
@@ -489,8 +442,9 @@ void placeShip2(){
 	if(x == 1){
 		x = 0 ;
 		system("cls");
-		placeShip1();
+		placeShip2();
 	}
 }
 }
+	
 	
