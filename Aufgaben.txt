@@ -1,10 +1,16 @@
-Ilir: Game_Logic_2Player
-David: ?
-Tristan: Place_Ships
-
+Ilir: Bot
+David: Bot
+Tristan: Bot
 
 Complete:
 -Game_Logic_Mockup
+-Game_Logic_twoPlayer
+-ship_placement
+-colors
+-battleship_rules
+-menu
+-Bug_fixes_game
+-Bug_fixes_logic
 -Shooting
 -Hitting
 -Player_Name
