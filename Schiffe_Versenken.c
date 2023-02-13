@@ -785,7 +785,15 @@ void Attack(){
 	 HitValue = 0;
 	 } 	
 		}
- if(HitValue > 1){ HitValue = 0;}
+ if(HitValue > 1){ 
+	 HitValue = 0;
+	 srand(time( NULL )+1);
+	 KWW =(rand() % 10);
+	 srand(time( NULL ));
+	 KWS =(rand() % 10);
+	 Action[0] = KWW ; //Aktion
+	 Action[1] = KWS ; 
+	 }
  BotSchuss();
 }
 
