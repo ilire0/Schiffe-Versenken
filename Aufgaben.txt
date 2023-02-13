@@ -1,8 +1,9 @@
-Ilir: Bot
-David: Bot
-Tristan: Bot
+Ilir: fertig
+David: fertig
+Tristan: fertig
 
 Complete:
+-Bot
 -Game_Logic_Mockup
 -Game_Logic_twoPlayer
 -ship_placement
