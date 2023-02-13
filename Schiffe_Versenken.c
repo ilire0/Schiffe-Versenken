@@ -11,17 +11,21 @@
 #define AC_NORMAL "\x1b[m"
 
 //Globale Variablen
-time_t t1 ;
-time_t t2 ;
+time_t t1,t2;
 int botMemory[3];
+char RandomNumbers[100];
+char inputCorrect=1;
+int saveloop = 0 ;
 unsigned char Action[3];
 unsigned char KWW; //Koordinatenwert Waagerecht
 unsigned char KWS; //Koordinatenwert Senkrecht
 char Spieler1[50], Spieler2[50];
+char Bot[50] ="DITBOT";
 int SpielerPunkte1 = 0 ;
 int SpielerPunkte2 = 0 ;
-int loopsave = 0;
 int Fokus = 1;
+int HitValue = 0;
+unsigned char randomness = 0;
 int SpielfeldSpieler1[SIZE][SIZE];
 int SpielfeldSpieler2[SIZE][SIZE];
 char koordinaten[2];
@@ -29,7 +33,6 @@ char winner = 0 ;
 int Spielmodus ;
 char meme[] = "RickAstley";
 int x = 0 ;
-int HitValue = 0 ;
 struct Boote{
     int Schlachtschiff ;
     int Kreuzer;
@@ -90,16 +93,16 @@ int main(int argc, char **argv){
 	printf("\n");
     }
     if(Spielmodus == 1){
-		Spieler2[50] = "DITBot";
 		singlePlayer();
 		printf("\n");
 	system("pause");
 	if(winner == 1){
-	printf("\n\n%s Herzlichen Glueckwunsch ! , %s gibt sich geschlagen.",Spieler1,Spieler2);
+	printf("\n\n%s Herzlichen Glueckwunsch ! , %s gibt sich geschlagen.",Spieler1,Bot);
+	printf("\n Damit ist das Spiel beendet . Ich wünsche noch einen guten Tag.");
 	system("pause");
 	}
 	if(winner == 2){
-	printf("\n\n%s hat sein Wissen bewiesen und damit wird der Verlierer %s bestraft. Tut mir leid für dich ^-^",Spieler2,Spieler1);
+	printf("\n\n%s hat sein Wissen bewiesen und damit wird der Verlierer %s bestraft. Tut mir leid für dich ^-^",Bot,Spieler1);
 	system("start https://youtu.be/dQw4w9WgXcQ");
 	printf("\n");
 	system("pause");
@@ -126,17 +129,24 @@ void Beginning(){
         scanf("%s", Spieler2);
         system("cls");
     }
+    if(Spielmodus ==1) {
+		printf(" DITBOT nimmt ihre Herausforderung an. \n");
+		system("pause");
+		system("cls");
+	}
 }
 
 void feldkoordinate()
-{
+{	
+	while(1){
     printf("Zeile angeben dann Spalte angeben: \n");
     scanf("%s", &koordinaten);
     koordinaten[0] = koordinaten[0] - 48;
     koordinaten[1] = koordinaten[1] - 65;
     if (koordinaten[0]>SIZE || koordinaten[0]<0 || koordinaten[1]>SIZE || koordinaten[1]<0 )
-		{ printf("Wrong Input!"); Schuss();}
-	
+		{  inputCorrect = 0;break;}
+		break;
+	}
 }
 
 void createGrid(int player){
@@ -144,6 +154,9 @@ void createGrid(int player){
 	if(player == 1){
 	printf("           Spieler 1: %s\n",Spieler1);
 	printf("           Punkte: %d\n",SpielerPunkte1);
+	if(Spielmodus == 1){
+	printf("           Gegnerische Punkte: %d\n",SpielerPunkte2);
+}
 	printf("\n");}
 	if(player == 2){
 	printf("           Spieler 2: %s\n",Spieler2);
@@ -179,7 +192,7 @@ void createGrid(int player){
 						case 0: 	printf("|   "); break; //LEER
 						case 1:		printf("| "); printf("%sO%s ",AC_BLUE,AC_NORMAL);break; //BOOT
 						case 2:		printf("| "); printf("%sX%s ",AC_RED,AC_NORMAL);break; //HIT
-						case 3:		printf("| "); printf("%s~%s ",AC_YELLOW,AC_NORMAL);break; //MISS
+						case 3:		printf("| "); printf("%s#%s ",AC_YELLOW,AC_NORMAL);break; //MISS
 						default: 	printf("|   "); break;
 					}
 				}if(player == 2){
@@ -187,7 +200,7 @@ void createGrid(int player){
 						case 0: 	printf("|   "); break; //LEER
 						case 1:		printf("| "); printf("%sO%s ",AC_CYAN,AC_NORMAL);break; //BOOT
 						case 2:		printf("| "); printf("%sX%s ",AC_RED,AC_NORMAL);break; //HIT
-						case 3:		printf("| "); printf("%s~%s ",AC_YELLOW,AC_NORMAL);break; //MISS
+						case 3:		printf("| "); printf("%s#%s ",AC_YELLOW,AC_NORMAL);break; //MISS
 						default: 	printf("|   "); break;
 					}
 				 }	
@@ -239,14 +252,14 @@ void createHitGrid(int player){
 					switch(SpielfeldSpieler1[i][y]) {
 						case 0: 	printf("|   "); break; //LEER
 						case 2:		printf("| "); printf("%sX%s ",AC_RED,AC_NORMAL);break; //HIT
-						case 3:		printf("| "); printf("%s~%s ",AC_YELLOW,AC_NORMAL);break; //MISS
+						case 3:		printf("| "); printf("%s#%s ",AC_YELLOW,AC_NORMAL);break; //MISS
 						default: 	printf("|   "); break;
 					}
 				}if(player == 2){
 					switch(SpielfeldSpieler2[i][y]) {
 						case 0: 	printf("|   "); break; //LEER
 						case 2:		printf("| "); printf("%sX%s ",AC_RED,AC_NORMAL);break; //HIT
-						case 3:		printf("| "); printf("%s~%s ",AC_YELLOW,AC_NORMAL);break; //MISS
+						case 3:		printf("| "); printf("%s#%s ",AC_YELLOW,AC_NORMAL);break; //MISS
 						default: 	printf("|   "); break;
 					}
 				 }	
@@ -314,6 +327,8 @@ void singlePlayer(){
 }
 //DITBot Legt seine Boote-------------------------------------------------
 	placeShipBOT();
+	printf("\n DITBot hat seine Schiffe platziert. \n\n");
+	
 //-----------------------------------------------------------------------
 	while(1){
 	system("cls");
@@ -328,7 +343,7 @@ void singlePlayer(){
 		break;	
 		}
 	system("cls");
-	printf("Spieler 2: %s ist an der Reihe",Spieler2);
+	printf("Spieler 2: %s ist an der Reihe",Bot);
 	printf("Punkte: %d\n",SpielerPunkte2);
 	Attack();
 	createHitGrid(1);
@@ -348,14 +363,26 @@ void singlePlayer(){
 
 void Schuss()
 {
+	while(1){
+	inputCorrect = 1;
     if (Fokus == 1){
         printf("\n %s schiesst \n", &Spieler1);
         feldkoordinate();
+       if(inputCorrect ==0){printf("\n Falsche Eingabe , versuchs nochmal. \n");Schuss();break;}else{
+		inputCorrect = 1;
         treffer1();
-    } if (Fokus == 2){
+        break;
+	}
+	}
+     if (Fokus == 2){
         printf("\n %s schiesst \n", &Spieler2);
         feldkoordinate();
+        if(inputCorrect ==0){printf("\n Falsche Eingabe , versuchs nochmal. \n");Schuss();break;}else{
+		inputCorrect = 1;
         treffer2();
+        break;
+	}
+    }
     }
 }
 
@@ -372,12 +399,22 @@ void treffer1()
 void treffer2(){ //Gegenspieler/ DITBot
     switch(SpielfeldSpieler1[koordinaten[0]][koordinaten[1]]){
         case 0: SpielfeldSpieler1[koordinaten[0]][koordinaten[1]] = 3; printf("\nDu hast nichts getroffen\n"); break;
-        case 1: SpielfeldSpieler1[koordinaten[0]][koordinaten[1]] = 2; printf("\nDu hast getroffen!\n");HitValue += 1;SpielerPunkte2 += 100 ; break;
-        case 2: printf("\nDas Boot ist bereits getroffen\n"); if(Spielmodus==2){Schuss();}if(Spielmodus==1){HitValue += 1;Attack();} break;
-        case 3: printf("\nHier hast du schonmal hingeschossen, hier ist nichts\n"); if(Spielmodus==2){Schuss();}if(Spielmodus==1){HitValue += 1;Attack();} break;
-        default:  if(Spielmodus==2){Schuss();}if(Spielmodus==1){HitValue += 1;Attack();} break;
+        case 1: SpielfeldSpieler1[koordinaten[0]][koordinaten[1]] = 2; printf("\nDu hast getroffen!\n");SpielerPunkte2 += 100; break;
+        case 2: printf("\nDas Boot ist bereits getroffen\n"); Schuss(); break;
+        case 3: printf("\nHier hast du schonmal hingeschossen, hier ist nichts\n"); Schuss(); break;
+        default:  if(Spielmodus==2){Schuss();}if(Spielmodus==1){Attack();} break;
     }
 }
+
+void trefferbot(){
+	 switch(SpielfeldSpieler1[koordinaten[0]][koordinaten[1]]){
+        case 0: SpielfeldSpieler1[koordinaten[0]][koordinaten[1]] = 3;printf("\n%s hast nicht getroffen\n",Bot);HitValue=0;break;
+        case 1: SpielfeldSpieler1[koordinaten[0]][koordinaten[1]] = 2;if(Spielmodus==2){ printf("\n%s hast getroffen!\n",Spieler2);}if(Spielmodus=1){printf("\n%s hast getroffen!\n",Bot);}SpielerPunkte2 += 100 ; break;
+        case 2: printf("\n XXX \n");randomness++; break;
+        case 3: printf("\n ### \n");randomness++;HitValue=0;break;
+        default: HitValue=0; break;
+	}
+	}
 
 void placeShip1(){
 	while(1){
@@ -386,7 +423,8 @@ void placeShip1(){
 		char Endkoordinate[3];
 		int Speicher = 0;
 		int y = 0;
-		printf("Bitte Startkoordinate angeben:");
+		while(1){
+		printf("\nBitte Startkoordinate angeben:");
 		scanf(" %s", Startkoordinate);
 		printf("Bitte Endkoordinat angeben:");
 		scanf(" %s", Endkoordinate);
@@ -398,9 +436,8 @@ void placeShip1(){
 		if (Startkoordinate[0]>SIZE || Startkoordinate[0]<0 || Startkoordinate[1]>SIZE || Startkoordinate[1]<0 ||Endkoordinate[0]>SIZE || Endkoordinate[0]<0 || Endkoordinate[1]>SIZE || Endkoordinate[1]<0 )
 		{
 			printf("\nBitte gueltige Werte eingeben");
-			placeShip1();
-		}
-
+		}else {break;}
+}
 		if((Startkoordinate[0] != Endkoordinate[0]) && (Startkoordinate[1] == Endkoordinate[1])){
 		
 			Speicher = Startkoordinate[0] - Endkoordinate[0];  //4 - 6 = -2  3-0 = 3
@@ -415,7 +452,7 @@ void placeShip1(){
 			}
 			if(x == 1){x = 0 ;placeShip1();break ;}
             		switch((Speicher*(-1)+1)){
-                		case 5: BooteP1.Schlachtschiff --;break;
+                		case 5: BooteP1.Schlachtschiff --;x = 0 ;break;
                 		case 4: BooteP1.Kreuzer --;break;
                 		case 3: BooteP1.Zerstoerer --;break;
                 		case 2: BooteP1.UBoot --;break;
@@ -509,6 +546,7 @@ void placeShip2(){
 		char Endkoordinate[3];
 		int Speicher = 0;
 		int y = 0;
+		while(1){
 		printf("Bitte Startkoordinate angeben:");
 		scanf(" %s", Startkoordinate);
 		printf("Bitte Endkoordinat angeben:");
@@ -521,9 +559,8 @@ void placeShip2(){
 		if (Startkoordinate[0]>SIZE || Startkoordinate[0]<0 || Startkoordinate[1]>SIZE || Startkoordinate[1]<0 ||Endkoordinate[0]>SIZE || Endkoordinate[0]<0 || Endkoordinate[1]>SIZE || Endkoordinate[1]<0 )
 		{
 			printf("\nBitte gueltige Werte eingeben");
-						placeShip2();
-		}
-
+		}else{ break;}
+}
 		if((Startkoordinate[0] != Endkoordinate[0]) && (Startkoordinate[1] == Endkoordinate[1])){
 		
 			Speicher = Startkoordinate[0] - Endkoordinate[0];  //4 - 6 = -2  3-0 = 3
@@ -760,53 +797,66 @@ void placeShipBOT(){
 
 void Attack(){
 	//Standard Action --- If its Searching
-	if(HitValue == 0){
-	srand(time( NULL )+1);
-	KWW =(rand() % 10);
-	srand(time( NULL ));
-	KWS =(rand() % 10);
+	srand(time(NULL));
+	KWW =(rand() % 10); 
+	srand(randomness);
+	for(int rounds = 0 ; rounds <= 50; rounds++){
+	RandomNumbers[rounds] = rand()%10;
+ }
+	KWS = RandomNumbers[randomness];
 	
 	botMemory[0]= KWW; //Memory
 	botMemory[1]= KWS;
 	
-	Action[0] = KWW ; //Aktion
-	Action[1] = KWS ; 
+	Action[0] = botMemory[0] ; //Aktion
+	Action[1] = botMemory[1] ; 
 
-}
-    //Destruct Action --- When it found something.
-	if(HitValue == 1){
-	Action[0] = KWW - 1 ;
-	if(KWW >9){ 
-		KWW = botMemory[0];
-		} 
-	Action[1] = KWS ;
-	loopsave++;
-	if(loopsave ==3){
-	 HitValue = 0;
+
+switch(HitValue){
+	case 1:
+		KWW = botMemory[0] - 1;
+		if(KWW >9){ KWW = botMemory[0];} 
+		Action[1] = botMemory[1] ;
+		Action[0] = KWW;
+		break;
+		
+	case 2:
+		Action[0] = botMemory[1] ;
+		KWS = botMemory[1] + 1 ;
+		if(KWS >9) { KWS = botMemory[0];}
+		Action[1] = KWS;
+		break;
+	case 3:KWW = botMemory[0] + 1;
+		if(KWW >9){ KWW = botMemory[0];} 
+		Action[1] = botMemory[1] ;
+		Action[0] = KWW;
+		break;
+	case 4:Action[0] = botMemory[1] ;
+		KWS = botMemory[1] - 1 ;
+		if(KWS >9) { KWS = botMemory[0];}
+		Action[1] = KWS;
+		break;
+	default: HitValue = 0 ; break;
 	 } 	
-		}
- if(HitValue > 1){ 
-	 HitValue = 0;
-	 srand(time( NULL )+1);
-	 KWW =(rand() % 10);
-	 srand(time( NULL ));
-	 KWS =(rand() % 10);
-	 Action[0] = KWW ; //Aktion
-	 Action[1] = KWS ; 
-	 }
+	 
+	 
+	 
+ randomness++ ;
+ if(randomness >100){randomness = 0 ;}
+ HitValue++;
+ saveloop++;
+ if(saveloop > 4){HitValue = 0; saveloop=0;}
  BotSchuss();
 }
 
 void BotSchuss(){
  if (Fokus == 2){
-        printf("\n DITBot schiesst \n");
         BFeldkoordinate();
-        treffer2();
+        trefferbot();
     }
 	}
 
 void BFeldkoordinate(){
 	koordinaten[0] = Action[0] ;
 	koordinaten[1] = Action[1] ;
-	
 	}
