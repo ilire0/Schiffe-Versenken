@@ -31,7 +31,7 @@ int SpielfeldSpieler2[SIZE][SIZE];
 char koordinaten[2];
 char winner = 0 ;
 int Spielmodus ;
-char meme[] = "RickAstley";
+char meme[] = "Missing_NO";
 int x = 0 ;
 struct Boote{
     int Schlachtschiff ;
@@ -83,14 +83,14 @@ int main(int argc, char **argv){
 	printf("\n");
 	system("pause");
 	if(winner == 1){
-	printf("\n\n%s Bitte gehen Sie vom Bildschirm weg , da der Verlierer %s seine Strafe erhaelt.",Spieler1,Spieler2);
+	printf("\n\n%s , Sie haben dieses Spiel gewonnen und den Lob des Programms verdient . Für %s , ich wuensch ihnen viel Glueck beim naechsten mal.",Spieler1,Spieler2);
 	system("pause");
 	}
 	if(winner == 2){
-	printf("\n\n%s Bitte gehen Sie vom Bildschirm weg , da der Verlierer %s seine Strafe erhaelt.",Spieler2,Spieler1);
+	printf("\n\n%s , Sie haben dieses Spiel gewonnen und den Lob des Programms verdient . Für %s , ich wuensch ihnen viel Glueck beim naechsten mal.",Spieler2,Spieler1);
 	system("pause");
 	}
-	system("start https://youtu.be/dQw4w9WgXcQ");
+	
 	printf("\n");
     }
     if(Spielmodus == 1){
