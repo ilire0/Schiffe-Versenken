@@ -7,3 +7,6 @@ while(der anfang == true){
 6.Veröffentlichen in Github
 7.Implementieren in größeren Testcode
 }
+
+
+(Diese Datei ist nur zur Darstellungszwecken & Planungsbedingten Themen zu gebrauchen.)
