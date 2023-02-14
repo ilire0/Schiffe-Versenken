@@ -12,7 +12,7 @@
 
 //Globale Variablen
 time_t t1,t2;
-int botMemory[3];
+int botMemory[4][3];
 char RandomNumbers[100];
 char inputCorrect=1;
 int saveloop = 0 ;
@@ -72,10 +72,11 @@ int main(int argc, char **argv){
 
         }
     }
+    for(int v = 0 ; v < 4 ; v++){
     for(int y = 0 ; y < 3;y++){
-            botMemory[y] = 0 ;
+            botMemory[v][y] = 0 ;
         }
-    
+    }
     Beginning();
     if(Spielmodus == 2){
 	twoPlayer();
@@ -97,8 +98,8 @@ int main(int argc, char **argv){
 		printf("\n");
 	system("pause");
 	if(winner == 1){
-	printf("\n\n%s Herzlichen Glueckwunsch ! , %s gibt sich geschlagen.",Spieler1,Bot);
-	printf("\n Damit ist das Spiel beendet . Ich wünsche noch einen guten Tag.");
+	printf("\n\n%s Herzlichen Glueckwunsch ! %s gibt sich geschlagen.",Spieler1,Bot);
+	printf("\nDamit ist das Spiel beendet . Ich wuensche noch einen guten Tag.");
 	system("pause");
 	}
 	if(winner == 2){
@@ -408,10 +409,10 @@ void treffer2(){ //Gegenspieler/ DITBot
 
 void trefferbot(){
 	 switch(SpielfeldSpieler1[koordinaten[0]][koordinaten[1]]){
-        case 0: SpielfeldSpieler1[koordinaten[0]][koordinaten[1]] = 3;printf("\n%s hast nicht getroffen\n",Bot);HitValue=0;break;
-        case 1: SpielfeldSpieler1[koordinaten[0]][koordinaten[1]] = 2;if(Spielmodus==2){ printf("\n%s hast getroffen!\n",Spieler2);}if(Spielmodus=1){printf("\n%s hast getroffen!\n",Bot);}SpielerPunkte2 += 100 ; break;
-        case 2: printf("\n XXX \n");randomness++; break;
-        case 3: printf("\n ### \n");randomness++;HitValue=0;break;
+        case 0: SpielfeldSpieler1[koordinaten[0]][koordinaten[1]] = 3;printf("\n%s hast nicht getroffen%d\n",Bot,HitValue);HitValue=0;break;
+        case 1: SpielfeldSpieler1[koordinaten[0]][koordinaten[1]] = 2;printf("\n%s hast getroffen!%d\n",Bot,HitValue);SpielerPunkte2 += 100 ; break;
+        case 2: printf("\n Scannt Treffer... \n");randomness++;if(HitValue< 0){HitValue = 0;}else{HitValue-=1;};Attack(); break; 
+        case 3: printf("\n Scannt Fehler... \n");randomness++;if(HitValue< 0){HitValue = 0;}else{HitValue-=1;};Attack();break;
         default: HitValue=0; break;
 	}
 	}
@@ -804,37 +805,41 @@ void Attack(){
 	RandomNumbers[rounds] = rand()%10;
  }
 	KWS = RandomNumbers[randomness];
+	for(int b = 0 ; b<3 ;b++){
+	botMemory[b+1][0]=botMemory[b][0];
+	botMemory[b+1][1]=botMemory[b][1];
+}
+	botMemory[0][0]= KWW; //Memory
+	botMemory[0][1]= KWS;
 	
-	botMemory[0]= KWW; //Memory
-	botMemory[1]= KWS;
-	
-	Action[0] = botMemory[0] ; //Aktion
-	Action[1] = botMemory[1] ; 
+	Action[0] = botMemory[3][0] ; //Aktion
+	Action[1] = botMemory[3][1] ; 
 
 
 switch(HitValue){
 	case 1:
-		KWW = botMemory[0] - 1;
-		if(KWW >9){ KWW = botMemory[0];} 
-		Action[1] = botMemory[1] ;
+		KWW = botMemory[3][0] - 1;
+		if(KWW >9){ KWW = botMemory[3][0];} 
+		Action[1] = botMemory[3][1] ;
 		Action[0] = KWW;
 		break;
-		
-	case 2:
-		Action[0] = botMemory[1] ;
-		KWS = botMemory[1] + 1 ;
-		if(KWS >9) { KWS = botMemory[0];}
-		Action[1] = KWS;
-		break;
-	case 3:KWW = botMemory[0] + 1;
-		if(KWW >9){ KWW = botMemory[0];} 
-		Action[1] = botMemory[1] ;
+	case 2:KWW = botMemory[3][0] + 1;
+		if(KWW >9){ KWW = botMemory[3][0];} 
+		Action[1] = botMemory[3][1] ;
 		Action[0] = KWW;
-		break;
-	case 4:Action[0] = botMemory[1] ;
-		KWS = botMemory[1] - 1 ;
-		if(KWS >9) { KWS = botMemory[0];}
+		break;	
+	case 3:
+		KWS = botMemory[3][1] + 1 ;
+		if(KWS >9) { KWS = botMemory[3][1];}
 		Action[1] = KWS;
+		Action[0] = botMemory[3][0] ;
+		break;
+	
+	case 4:
+		KWS = botMemory[3][1] - 1 ;
+		if(KWS >9) { KWS = botMemory[3][1];}
+		Action[1] = KWS;
+		Action[0] = botMemory[3][0] ;
 		break;
 	default: HitValue = 0 ; break;
 	 } 	
