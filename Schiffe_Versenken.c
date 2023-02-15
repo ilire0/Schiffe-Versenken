@@ -805,7 +805,7 @@ void Attack(){
 	RandomNumbers[rounds] = rand()%10;
  }
 	KWS = RandomNumbers[randomness];
-	for(int b = 0 ; b<3 ;b++){
+	for(int b = 2 ; b>=0 ;b++){
 	botMemory[b+1][0]=botMemory[b][0];
 	botMemory[b+1][1]=botMemory[b][1];
 }
