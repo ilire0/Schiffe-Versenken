@@ -797,7 +797,7 @@ void placeShipBOT(){
 }
 
 void Attack(){
-	//Standard Action --- If its Searching
+if(HitValue == 0){
 	srand(time(NULL));
 	KWW =(rand() % 10); 
 	srand(randomness);
@@ -805,15 +805,16 @@ void Attack(){
 	RandomNumbers[rounds] = rand()%10;
  }
 	KWS = RandomNumbers[randomness];
-	for(int b = 2 ; b>=0 ;b++){
+	for(int b = 2 ; b>=0 ;b++)
+	{
 	botMemory[b+1][0]=botMemory[b][0];
 	botMemory[b+1][1]=botMemory[b][1];
-}
+	}
 	botMemory[0][0]= KWW; //Memory
 	botMemory[0][1]= KWS;
-	
+}
 	Action[0] = botMemory[3][0] ; //Aktion
-	Action[1] = botMemory[3][1] ; 
+	Action[1] = botMemory[3][1] ;
 
 
 switch(HitValue){
